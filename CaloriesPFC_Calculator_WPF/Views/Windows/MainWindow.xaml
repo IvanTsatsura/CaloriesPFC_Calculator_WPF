@@ -54,7 +54,22 @@
         <TabControl DockPanel.Dock="Top">
             <TabItem  Header="Add meals"></TabItem>
             <TabItem  Header="Today statistics"></TabItem>
-            <TabItem  Header="All statistics"></TabItem>
+            <TabItem  Header="All statistics">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Grid.Column="0">
+                        <ListBox>
+                            
+                        </ListBox>
+                    </GroupBox>
+                    <GroupBox Grid.Column="1">
+
+                    </GroupBox>
+                </Grid>
+            </TabItem>
             <TabItem  Header="Calculator"></TabItem>
         </TabControl>
 
