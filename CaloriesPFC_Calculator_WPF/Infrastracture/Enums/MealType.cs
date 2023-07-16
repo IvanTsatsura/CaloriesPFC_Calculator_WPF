@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CaloriesPFC_Calculator_WPF.Infrastracture.Enums
 {
-    internal enum Meal
+    internal enum MealType
     {
         Breakfast,
         Brunch,
