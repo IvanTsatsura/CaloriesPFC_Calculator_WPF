@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CaloriesPFC_Calculator_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="CPFC_Calculator" Height="450" Width="800">
     <DockPanel>
         <TabControl DockPanel.Dock="Top">
             <TabItem  Header="Add meals"></TabItem>
