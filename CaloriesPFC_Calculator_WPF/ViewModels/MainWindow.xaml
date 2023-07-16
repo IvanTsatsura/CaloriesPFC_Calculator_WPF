@@ -6,7 +6,12 @@
         xmlns:local="clr-namespace:CaloriesPFC_Calculator_WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+    <DockPanel>
+        <TabControl DockPanel.Dock="Top">
+            <TabItem  Header="Add meals"></TabItem>
+            <TabItem  Header="Today statistics"></TabItem>
+            <TabItem  Header="All statistics"></TabItem>
+            <TabItem  Header="Calculator"></TabItem>
+        </TabControl>
+    </DockPanel>
 </Window>
