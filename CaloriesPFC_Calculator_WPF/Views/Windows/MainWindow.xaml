@@ -1,0 +1,62 @@
+﻿<Window x:Class="CaloriesPFC_Calculator_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:CaloriesPFC_Calculator_WPF.ViewModels"
+        xmlns:local="clr-namespace:CaloriesPFC_Calculator_WPF"
+        mc:Ignorable="d"
+        Title="{Binding Path=Title}"
+        Height="450" Width="800">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+    <DockPanel>
+        <StatusBar DockPanel.Dock="Bottom" Height="30">
+            <StatusBarItem>
+                <TextBlock Text="Calories:" FontSize="14"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <ProgressBar Width="100" Height="14" Value="50"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="value/value" FontSize="14"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="Proteins:" FontSize="14"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <ProgressBar Width="100" Height="14" Value="30" />
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="value/value" FontSize="14"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="Fats:" FontSize="14"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <ProgressBar Width="100" Height="14" Value="55" />
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="value/value" FontSize="14"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="Сarbohydrates:" FontSize="14"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <ProgressBar Width="100" Height="14" Value="15"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="value/value" FontSize="14"/>
+            </StatusBarItem>
+        </StatusBar>
+        
+        <TabControl DockPanel.Dock="Top">
+            <TabItem  Header="Add meals"></TabItem>
+            <TabItem  Header="Today statistics"></TabItem>
+            <TabItem  Header="All statistics"></TabItem>
+            <TabItem  Header="Calculator"></TabItem>
+        </TabControl>
+
+    </DockPanel>
+</Window>
