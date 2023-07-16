@@ -1,4 +1,5 @@
-﻿using CaloriesPFC_Calculator_WPF.ViewModels.Base;
+﻿using CaloriesPFC_Calculator_WPF.Models;
+using CaloriesPFC_Calculator_WPF.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,19 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         {
             get => _title;
             set => Set(ref _title, value);
+        }
+        #endregion
+
+        #region All DayRation property : IEnumerable<DayRation>
+        public IEnumerable<DayRation>? DayRations { get; set; }
+        #endregion
+
+        #region Selected DayRation field + property : DayRation
+        private DayRation? _dayRation;
+        public DayRation DayRation
+        {
+            get => _dayRation;
+            set => Set(ref _dayRation, value);
         }
         #endregion
     }
