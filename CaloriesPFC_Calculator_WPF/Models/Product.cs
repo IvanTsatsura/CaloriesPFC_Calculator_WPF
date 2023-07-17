@@ -57,6 +57,7 @@ namespace CaloriesPFC_Calculator_WPF.Models
             {
                 if (value < 0)
                     throw new ArgumentException(nameof(value));
+                _fats = value;
             }
         }
         private float _carbohydrates;
@@ -76,7 +77,7 @@ namespace CaloriesPFC_Calculator_WPF.Models
                 _carbohydrates = value;
             }
         }
-        private float _weightGrams;
+        private float _weightGrams = 100f;
         public float WeightGrams
         { 
             get => _weightGrams;
