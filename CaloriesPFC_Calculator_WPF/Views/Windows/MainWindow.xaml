@@ -51,7 +51,7 @@
             </StatusBarItem>
         </StatusBar>
         
-        <TabControl DockPanel.Dock="Top">
+        <TabControl DockPanel.Dock="Top" SelectedIndex="2">
             <TabItem  Header="Add meals"></TabItem>
             <TabItem  Header="Today statistics"></TabItem>
             <TabItem  Header="All statistics">
@@ -60,13 +60,15 @@
                         <ColumnDefinition Width="250"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <GroupBox Grid.Column="0">
-                        <ListBox>
-                            
-                        </ListBox>
+                    <GroupBox Grid.Column="0" Header="Dates">
+                        <ListBox ItemsSource="{Binding DayRations}" 
+                                 DisplayMemberPath="Date"
+                                 SelectedItem="{Binding SelectedDayRation, StringFormat='dd MMMM yyyy' }"/>
                     </GroupBox>
-                    <GroupBox Grid.Column="1">
-
+                    <GroupBox Grid.Column="1" Header="{Binding SelectedDayRation.Date, FallbackValue='Date', TargetNullValue='no date selected' }">
+                        <DataGrid ItemsSource="{Binding SelectedDayRation.Meals}">
+                            
+                        </DataGrid>
                     </GroupBox>
                 </Grid>
             </TabItem>
