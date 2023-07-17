@@ -11,91 +11,68 @@ namespace CaloriesPFC_Calculator_WPF.Models
     {
         public IEnumerable<Product>? Products { get; set; }
         public MealType Type { get; set; }
-        private float _calories = 0;
         public float Calories
         {
             get
             {
+                float tempCalories = 0f;
                 if (Products != null)
                 {
                     foreach (Product product in Products)
                     {
-                        _calories += product.Calories;
+                        tempCalories += product.Calories;
                     }
                 }
 
-                return _calories;
-            }
-            set
-            {
-                if (value < 0) throw new ArgumentException(nameof(value));
-                _calories = value;
+                return tempCalories;
             }
         }
-        private float _proteins;
         public float Proteins
         {
             get
             {
+                float tempProteins = 0f;
                 if (Products != null)
                 {
                     foreach (Product product in Products)
                     {
-                        _proteins += product.Proteins;
+                        tempProteins += product.Proteins;
                     }
                 }
 
-                return _proteins;
-            }
-            set
-            {
-                if (value < 0) throw new ArgumentException(nameof(value));
-
-                _proteins = value;
+                return tempProteins;
             }
         }
-        private float _fats;
         public float Fats
         {
             get
             {
+                float tempFats = 0f;
                 if (Products != null)
                 {
                     foreach (Product product in Products)
                     {
-                        _fats += product.Fats;
+                        tempFats += product.Fats;
                     }
                 }
 
-                return _fats;
-            }
-            set
-            {
-                if (value < 0) throw new ArgumentException(nameof(value));
-
-                _fats = value;
+                return tempFats;
             }
         }
-        private float _carbohydrates;
         public float Carbohydrates
         {
             get
             {
+                float tempCarbohydrates = 0f;
                 if (Products != null)
                 {
                     foreach (Product product in Products)
                     {
-                        _carbohydrates += product.Carbohydrates;
+                        tempCarbohydrates += product.Carbohydrates;
                     }
                 }
 
-                return _carbohydrates;
-            }
-            set
-            {
-                if (value < 0) throw new ArgumentException(nameof(value));
-
-                _carbohydrates = value;
+                return tempCarbohydrates;
             }
         }
     }
