@@ -51,9 +51,31 @@
             </StatusBarItem>
         </StatusBar>
         
-        <TabControl DockPanel.Dock="Top" SelectedIndex="2">
+        <TabControl DockPanel.Dock="Top" SelectedIndex="1">
             <TabItem  Header="Today"></TabItem>
-            <TabItem  Header="Your Products"></TabItem>
+            <TabItem  Header="Your Products">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <GroupBox Grid.Column="0" Grid.Row="1" Header="Your Products">
+                        <ListBox 
+                             ItemsSource="{Binding Products}"
+                             DisplayMemberPath="Name"
+                             SelectedItem="{Binding SelectedProduct}">
+                        </ListBox>
+                    </GroupBox>
+                    <GroupBox Grid.Column="1" Grid.Row="0" 
+                              Grid.RowSpan="2" Header="{Binding SelectedProduct.Name, FallbackValue='Select Product'}">
+                        
+                    </GroupBox>
+                </Grid>
+            </TabItem>
             <TabItem  Header="All Statistics">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -69,7 +91,7 @@
                                  DisplayMemberPath="Date"
                                  SelectedItem="{Binding SelectedDayRation, StringFormat='dd MMMM yyyy' }"/>
                     </GroupBox>
-                    <GroupBox Grid.Column="1" Header="{Binding SelectedDayRation.Date, FallbackValue='Date', TargetNullValue='no date selected' }"
+                    <GroupBox Grid.Column="1" Grid.Row="0" Header="{Binding SelectedDayRation.Date, FallbackValue='Select Date', TargetNullValue='no date selected' }"
                               Height="200" VerticalAlignment="Top">
                         <DataGrid ItemsSource="{Binding SelectedDayRation.Meals}"
                                   IsReadOnly="True" AutoGenerateColumns="False">

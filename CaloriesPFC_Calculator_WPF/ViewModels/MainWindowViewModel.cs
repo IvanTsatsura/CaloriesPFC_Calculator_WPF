@@ -25,12 +25,25 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         public ObservableCollection<DayRation>? DayRations { get; }
         #endregion
 
+        #region All Products property : IEnumerable<Product>
+        public ObservableCollection<Product>? Products { get; }
+        #endregion
+
         #region Selected DayRation field + property : DayRation
         private DayRation? _selectedDayRation;
         public DayRation SelectedDayRation
         {
             get => _selectedDayRation;
             set => Set(ref _selectedDayRation, value);
+        }
+        #endregion
+
+        #region Selected Product field + property : Product
+        private Product? _selectedProduct;
+        public Product SelectedProduct
+        {
+            get => _selectedProduct;
+            set => Set(ref _selectedProduct, value);
         }
         #endregion
 
@@ -97,9 +110,10 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
             day3.Meals = new Meal[] { meal1, meal2, meal3 };
             day3.Date = DateTime.Today.Date.AddDays(5);
 
-
+            Product[] Prds = new Product[] { tomato, egg, chicken, pasta };
             DayRation[] DRArr = new DayRation[] { day1, day2, day3 };
             DayRations = new ObservableCollection<DayRation>(DRArr.OrderBy(x => x.Date));
+            Products = new ObservableCollection<Product>(Prds.OrderBy(x => x.Name));  
         }
     }
 }
