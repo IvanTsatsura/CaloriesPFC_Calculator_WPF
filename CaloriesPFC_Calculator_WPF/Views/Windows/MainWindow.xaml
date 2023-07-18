@@ -60,13 +60,27 @@
                         <ColumnDefinition Width="250"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <GroupBox Grid.Column="0" Header="Dates">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <GroupBox Grid.Column="0" Grid.RowSpan="2" Header="Dates">
                         <ListBox ItemsSource="{Binding DayRations}" 
                                  DisplayMemberPath="Date"
                                  SelectedItem="{Binding SelectedDayRation, StringFormat='dd MMMM yyyy' }"/>
                     </GroupBox>
-                    <GroupBox Grid.Column="1" Header="{Binding SelectedDayRation.Date, FallbackValue='Date', TargetNullValue='no date selected' }">
-                        <DataGrid ItemsSource="{Binding SelectedDayRation.Meals}">
+                    <GroupBox Grid.Column="1" Header="{Binding SelectedDayRation.Date, FallbackValue='Date', TargetNullValue='no date selected' }"
+                              Height="200" VerticalAlignment="Top">
+                        <DataGrid ItemsSource="{Binding SelectedDayRation.Meals}"
+                                  IsReadOnly="True" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
+                                <DataGridTextColumn Header="Calories" Binding="{Binding Calories}"/>
+                                <DataGridTextColumn Header="Proteins" Binding="{Binding Proteins}"/>
+                                <DataGridTextColumn Header="Fats" Binding="{Binding Fats}"/>
+                                <DataGridTextColumn Header="Carbohydrates" Binding="{Binding Carbohydrates}"/>
+                                <DataGridTextColumn Header="weight in grams" Binding="{Binding WeightGrams}"/>
+                            </DataGrid.Columns>
                             
                         </DataGrid>
                     </GroupBox>

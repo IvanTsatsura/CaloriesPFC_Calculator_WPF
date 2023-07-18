@@ -35,7 +35,7 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         #endregion
 
         #region Dates property : DateTime
-        public ObservableCollection<DateTime> Dates { get; }
+        public ObservableCollection<DateTime>? Dates { get; }
         #endregion
 
         public MainWindowViewModel()
