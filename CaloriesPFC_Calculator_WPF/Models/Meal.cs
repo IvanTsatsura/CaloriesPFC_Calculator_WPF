@@ -9,7 +9,7 @@ namespace CaloriesPFC_Calculator_WPF.Models
 {
     internal class Meal
     {
-        public IEnumerable<Product>? Products { get; set; }
+        public IEnumerable<Dish>? Products { get; set; }
         public MealType Type { get; set; }
         public float Calories
         {
@@ -18,7 +18,7 @@ namespace CaloriesPFC_Calculator_WPF.Models
                 float tempCalories = 0f;
                 if (Products != null)
                 {
-                    foreach (Product product in Products)
+                    foreach (Dish product in Products)
                     {
                         tempCalories += product.Calories;
                     }
@@ -34,7 +34,7 @@ namespace CaloriesPFC_Calculator_WPF.Models
                 float tempProteins = 0f;
                 if (Products != null)
                 {
-                    foreach (Product product in Products)
+                    foreach (Dish product in Products)
                     {
                         tempProteins += product.Proteins;
                     }
@@ -50,7 +50,7 @@ namespace CaloriesPFC_Calculator_WPF.Models
                 float tempFats = 0f;
                 if (Products != null)
                 {
-                    foreach (Product product in Products)
+                    foreach (Dish product in Products)
                     {
                         tempFats += product.Fats;
                     }
@@ -66,7 +66,7 @@ namespace CaloriesPFC_Calculator_WPF.Models
                 float tempCarbohydrates = 0f;
                 if (Products != null)
                 {
-                    foreach (Product product in Products)
+                    foreach (Dish product in Products)
                     {
                         tempCarbohydrates += product.Carbohydrates;
                     }
@@ -82,7 +82,7 @@ namespace CaloriesPFC_Calculator_WPF.Models
                 float tempWeight = 0f;
                 if (Products != null)
                 {
-                    foreach (Product product in Products)
+                    foreach (Dish product in Products)
                     {
                         tempWeight += product.WeightGrams;
                     }

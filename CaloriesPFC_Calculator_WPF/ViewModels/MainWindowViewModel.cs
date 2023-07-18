@@ -29,7 +29,7 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         #endregion
 
         #region All Products property : IEnumerable<Product>
-        public ObservableCollection<Product>? Products { get; }
+        public ObservableCollection<Dish>? Products { get; }
         #endregion
 
         #region Selected DayRation field + property : DayRation
@@ -42,8 +42,8 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         #endregion
 
         #region Selected Product field + property : Product
-        private Product? _selectedProduct;
-        public Product SelectedProduct
+        private Dish? _selectedProduct;
+        public Dish SelectedProduct
         {
             get => _selectedProduct;
             set => Set(ref _selectedProduct, value);
@@ -57,10 +57,10 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         #region Commands
         #region Delete product command
         public ICommand DeleteProductCommand { get; }
-        private bool CanDeleteProductCommandExecute(object p) => p is Product product && Products.Contains(product);
+        private bool CanDeleteProductCommandExecute(object p) => p is Dish product && Products.Contains(product);
         private void OnDeleteProductCommandExecuted(object p)
         {
-            if (!(p is Product product)) return;
+            if (!(p is Dish product)) return;
             Products.Remove(product);
         }
         #endregion
@@ -74,7 +74,7 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
                 CanDeleteProductCommandExecute);
 
             #endregion
-            Product tomato = new Product()
+            Dish tomato = new Dish()
             {
                 Name = "Tomato",
                 Calories = 15.5f,
@@ -82,7 +82,7 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
                 Fats = 0.8f,
                 Carbohydrates = 4.0f
             };
-            Product egg = new Product()
+            Dish egg = new Dish()
             {
                 Name = "Egg",
                 Calories = 25.5f,
@@ -90,7 +90,7 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
                 Fats = 2.6f,
                 Carbohydrates = 4.0f
             };
-            Product chicken = new Product()
+            Dish chicken = new Dish()
             {
                 Name = "Chicken",
                 Calories = 130.5f,
@@ -98,7 +98,7 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
                 Fats = 3.2f,
                 Carbohydrates = 23.9f
             };
-            Product pasta = new Product()
+            Dish pasta = new Dish()
             {
                 Name = "Pasta",
                 Calories = 334.5f,
@@ -108,15 +108,15 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
             };
 
             Meal meal1 = new Meal();
-            meal1.Products = new Product[] { tomato, egg };
+            meal1.Products = new Dish[] { tomato, egg };
             meal1.Type = MealType.Breakfast;
 
             Meal meal2 = new Meal();
-            meal2.Products = new Product[] { chicken, tomato };
+            meal2.Products = new Dish[] { chicken, tomato };
             meal2.Type = MealType.Lunch;
 
             Meal meal3 = new Meal();
-            meal3.Products = new Product[] { chicken, tomato, pasta };
+            meal3.Products = new Dish[] { chicken, tomato, pasta };
             meal3.Type = MealType.Dinner;
 
             DayRation day1 = new DayRation();
@@ -131,10 +131,10 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
             day3.Meals = new Meal[] { meal1, meal2, meal3 };
             day3.Date = DateTime.Today.Date.AddDays(5);
 
-            Product[] Prds = new Product[] { tomato, egg, chicken, pasta };
+            Dish[] Prds = new Dish[] { tomato, egg, chicken, pasta };
             DayRation[] DRArr = new DayRation[] { day1, day2, day3 };
             DayRations = new ObservableCollection<DayRation>(DRArr.OrderBy(x => x.Date));
-            Products = new ObservableCollection<Product>(Prds.OrderBy(x => x.Name));  
+            Products = new ObservableCollection<Dish>(Prds.OrderBy(x => x.Name));  
         }
     }
 }

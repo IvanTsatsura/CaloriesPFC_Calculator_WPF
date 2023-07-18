@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CaloriesPFC_Calculator_WPF.Models
 {
-    internal class Product
+    internal class Dish
     {
         public string Name { get; set; }
         private float _calories;

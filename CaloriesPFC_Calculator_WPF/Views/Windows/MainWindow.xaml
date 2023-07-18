@@ -53,7 +53,7 @@
         
         <TabControl DockPanel.Dock="Top" SelectedIndex="1">
             <TabItem  Header="Today"></TabItem>
-            <TabItem  Header="Your Products">
+            <TabItem  Header="Dishes">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="250"/>
@@ -63,7 +63,7 @@
                         <RowDefinition Height="150"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <GroupBox Grid.Column="0" Grid.Row="1" Header="Your Products">
+                    <GroupBox Grid.Column="0" Grid.Row="1" Header="Your Dishes">
                         <ListBox 
                              ItemsSource="{Binding Products}"
                              DisplayMemberPath="Name"
@@ -71,7 +71,7 @@
                         </ListBox>
                     </GroupBox>
                     <GroupBox Grid.Column="1" Grid.Row="0" 
-                              Grid.RowSpan="2" Header="{Binding SelectedProduct.Name, FallbackValue='Select Product'}">
+                              Grid.RowSpan="2" Header="{Binding SelectedProduct.Name, FallbackValue='Select Dish'}">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
