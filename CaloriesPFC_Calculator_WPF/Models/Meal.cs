@@ -75,5 +75,21 @@ namespace CaloriesPFC_Calculator_WPF.Models
                 return tempCarbohydrates;
             }
         }
+        public float WeightGrams
+        {
+            get
+            {
+                float tempWeight = 0f;
+                if (Products != null)
+                {
+                    foreach (Product product in Products)
+                    {
+                        tempWeight += product.WeightGrams;
+                    }
+                }
+
+                return tempWeight;
+            }
+        }
     }
 }
