@@ -72,7 +72,45 @@
                     </GroupBox>
                     <GroupBox Grid.Column="1" Grid.Row="0" 
                               Grid.RowSpan="2" Header="{Binding SelectedProduct.Name, FallbackValue='Select Product'}">
-                        
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="12*"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="5*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0"
+                                Text="Calories:"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1"
+                                       Text="{Binding SelectedProduct.Calories}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0"
+                                Text="Proteins:"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1"
+                                       Text="{Binding SelectedProduct.Proteins}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0"
+                                Text="Fats:"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1"
+                                       Text="{Binding SelectedProduct.Fats}"/>
+                            <TextBlock Grid.Row="3" Grid.Column="0"
+                                Text="Carbohydrates:"/>
+                            <TextBlock Grid.Row="3" Grid.Column="1"
+                                       Text="{Binding SelectedProduct.Carbohydrates}"/>
+                            <TextBlock Grid.Row="4" Grid.Column="0"
+                                Text="Weight(grams):"/>
+                            <TextBlock Grid.Row="4" Grid.Column="1"
+                                       Text="{Binding SelectedProduct.WeightGrams}"/>
+                            <Button Grid.Row="6" Grid.Column="1"
+                                    Content="Remove product" Width="150"
+                                    Command="{Binding DeleteProductCommand}"
+                                    CommandParameter="{Binding SelectedProduct}"/>
+                        </Grid>
                     </GroupBox>
                 </Grid>
             </TabItem>
