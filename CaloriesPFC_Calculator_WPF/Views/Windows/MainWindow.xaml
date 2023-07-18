@@ -52,9 +52,9 @@
         </StatusBar>
         
         <TabControl DockPanel.Dock="Top" SelectedIndex="2">
-            <TabItem  Header="Add meals"></TabItem>
-            <TabItem  Header="Today statistics"></TabItem>
-            <TabItem  Header="All statistics">
+            <TabItem  Header="Today"></TabItem>
+            <TabItem  Header="Your Products"></TabItem>
+            <TabItem  Header="All Statistics">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="250"/>
