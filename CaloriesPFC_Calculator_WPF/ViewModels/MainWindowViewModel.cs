@@ -1,4 +1,5 @@
-﻿using CaloriesPFC_Calculator_WPF.Infrastracture.Enums;
+﻿using CaloriesPFC_Calculator_WPF.Infrastracture.Commands;
+using CaloriesPFC_Calculator_WPF.Infrastracture.Enums;
 using CaloriesPFC_Calculator_WPF.Models;
 using CaloriesPFC_Calculator_WPF.ViewModels.Base;
 using System;
@@ -6,7 +7,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace CaloriesPFC_Calculator_WPF.ViewModels
 {
@@ -51,8 +54,26 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         public ObservableCollection<DateTime>? Dates { get; }
         #endregion
 
+        #region Commands
+        #region Delete product command
+        public ICommand DeleteProductCommand { get; }
+        private bool CanDeleteProductCommandExecute(object p) => p is Product product && Products.Contains(product);
+        private void OnDeleteProductCommandExecuted(object p)
+        {
+            if (!(p is Product product)) return;
+            Products.Remove(product);
+        }
+        #endregion
+        #endregion
+
         public MainWindowViewModel()
         {
+            #region Commands
+
+            DeleteProductCommand = new RelayCommand(OnDeleteProductCommandExecuted,
+                CanDeleteProductCommandExecute);
+
+            #endregion
             Product tomato = new Product()
             {
                 Name = "Tomato",
