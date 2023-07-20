@@ -57,7 +57,8 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         #region Commands
         #region Delete product command
         public ICommand DeleteProductCommand { get; }
-        private bool CanDeleteProductCommandExecute(object p) => p is Dish product && Products.Contains(product);
+        private bool CanDeleteProductCommandExecute(object p) => p is Dish product && 
+            Products != null && Products.Contains(product);
         private void OnDeleteProductCommandExecuted(object p)
         {
             if (!(p is Dish product)) return;

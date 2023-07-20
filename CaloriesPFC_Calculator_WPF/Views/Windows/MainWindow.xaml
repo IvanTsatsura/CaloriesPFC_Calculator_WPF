@@ -63,12 +63,17 @@
                         <RowDefinition Height="150"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <GroupBox Grid.Column="0" Grid.Row="1" Header="Your Dishes">
-                        <ListBox 
-                             ItemsSource="{Binding Products}"
-                             DisplayMemberPath="Name"
-                             SelectedItem="{Binding SelectedProduct}">
-                        </ListBox>
+                    <GroupBox Header="Your Dishes" Grid.Column="0" Grid.Row="1">
+                        <DockPanel>
+                            <DockPanel DockPanel.Dock="Top">
+                                <TextBox Text="Find dish"/>
+                            </DockPanel>
+                            <ListBox 
+                                 ItemsSource="{Binding Products}"
+                                 DisplayMemberPath="Name"
+                                 SelectedItem="{Binding SelectedProduct}">
+                            </ListBox>
+                        </DockPanel>
                     </GroupBox>
                     <GroupBox Grid.Column="1" Grid.Row="0" 
                               Grid.RowSpan="2" Header="{Binding SelectedProduct.Name, FallbackValue='Select Dish'}">
