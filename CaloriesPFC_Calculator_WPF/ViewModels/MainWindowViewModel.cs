@@ -106,17 +106,29 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
 
         #region Commands
         #region Delete dish command
-        public ICommand DeleteProductCommand { get; }
-        private bool CanDeleteProductCommandExecute(object p) => p is Dish product && 
-            Dishes != null && Dishes.Contains(product);
-        private void OnDeleteProductCommandExecuted(object p)
+        public ICommand DeleteDishCommand { get; }
+        private bool CanDeleteDishCommandExecute(object p) => p is Dish dish && 
+            Dishes != null && Dishes.Contains(dish);
+        private void OnDeleteDishCommandExecuted(object p)
         {
-            if (!(p is Dish product)) return;
-            Dishes.Remove(product);
+            if (!(p is Dish dish)) return;
+            Dishes.Remove(dish);
         }
         #endregion
+
         #region SearchCommand
         public ICommand SearchDishCommand { get; }
+        private bool CanSearchProductCommandExecute(object p) => p is string name && 
+            !string.IsNullOrEmpty(name) && !string.IsNullOrWhiteSpace(name);
+        private void OnSearchProductCommandExecuted(object p)
+        {
+            if (!(p is string name)) return;
+            if (Dishes != null)
+                FiltredDishes = Dishes
+                    .Where(d => d.Name.Contains(name, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+            OnPropertyChanged(nameof(FiltredDishes));
+        }
         #endregion
         #endregion
 
@@ -124,8 +136,10 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         {
             #region Commands
 
-            DeleteProductCommand = new RelayCommand(OnDeleteProductCommandExecuted,
-                CanDeleteProductCommandExecute);
+            DeleteDishCommand = new RelayCommand(OnDeleteDishCommandExecuted,
+                CanDeleteDishCommandExecute);
+            SearchDishCommand = new RelayCommand(OnSearchProductCommandExecuted,
+                CanSearchProductCommandExecute);
 
             #endregion
 

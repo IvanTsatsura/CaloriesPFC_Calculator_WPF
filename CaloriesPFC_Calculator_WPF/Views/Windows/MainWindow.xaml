@@ -66,19 +66,21 @@
                     <GroupBox Header="Your Dishes" Grid.Column="0" Grid.Row="1">
                         <DockPanel>
                             <DockPanel DockPanel.Dock="Top">
-                                <Button Content="Search" />
-                                <TextBox/>
+                                <Button Content="Search" 
+                                        Command="{Binding SearchDishCommand}"
+                                        CommandParameter="{Binding ElementName=ForSearchBox}"/>
+                                <TextBox x:Name="ForSearchBox"/>
                             </DockPanel>
                             <ListBox 
                                 SelectedIndex="0"
-                                 ItemsSource="{Binding Dishes}"
+                                 ItemsSource="{Binding FiltredDishes}"
                                  DisplayMemberPath="Name"
                                  SelectedItem="{Binding SelectedDish}">
                             </ListBox>
                         </DockPanel>
                     </GroupBox>
                     <GroupBox Grid.Column="1" Grid.Row="0" 
-                              Grid.RowSpan="2" Header="{Binding SelectedProduct.Name, FallbackValue='Select Dish'}">
+                              Grid.RowSpan="2" Header="{Binding SelectedDish.Name, FallbackValue='Select Dish'}">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
@@ -96,27 +98,27 @@
                             <TextBlock Grid.Row="0" Grid.Column="0"
                                 Text="Calories:"/>
                             <TextBlock Grid.Row="0" Grid.Column="1"
-                                       Text="{Binding SelectedProduct.Calories}"/>
+                                       Text="{Binding SelectedDish.Calories}"/>
                             <TextBlock Grid.Row="1" Grid.Column="0"
                                 Text="Proteins:"/>
                             <TextBlock Grid.Row="1" Grid.Column="1"
-                                       Text="{Binding SelectedProduct.Proteins}"/>
+                                       Text="{Binding SelectedDish.Proteins}"/>
                             <TextBlock Grid.Row="2" Grid.Column="0"
                                 Text="Fats:"/>
                             <TextBlock Grid.Row="2" Grid.Column="1"
-                                       Text="{Binding SelectedProduct.Fats}"/>
+                                       Text="{Binding SelectedDish.Fats}"/>
                             <TextBlock Grid.Row="3" Grid.Column="0"
                                 Text="Carbohydrates:"/>
                             <TextBlock Grid.Row="3" Grid.Column="1"
-                                       Text="{Binding SelectedProduct.Carbohydrates}"/>
+                                       Text="{Binding SelectedDish.Carbohydrates}"/>
                             <TextBlock Grid.Row="4" Grid.Column="0"
                                 Text="Weight(grams):"/>
                             <TextBlock Grid.Row="4" Grid.Column="1"
-                                       Text="{Binding SelectedProduct.WeightGrams}"/>
+                                       Text="{Binding SelectedDish.WeightGrams}"/>
                             <Button Grid.Row="6" Grid.Column="1"
                                     Content="Remove product" Width="150"
-                                    Command="{Binding DeleteProductCommand}"
-                                    CommandParameter="{Binding SelectedProduct}"/>
+                                    Command="{Binding DeleteDishCommand}"
+                                    CommandParameter="{Binding SelectedDish}"/>
                         </Grid>
                     </GroupBox>
                 </Grid>
