@@ -5,10 +5,12 @@ using CaloriesPFC_Calculator_WPF.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace CaloriesPFC_Calculator_WPF.ViewModels
@@ -28,8 +30,12 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         public ObservableCollection<DayRation>? DayRations { get; }
         #endregion
 
-        #region All Products property : IEnumerable<Product>
-        public ObservableCollection<Dish>? Products { get; }
+        #region All Dishes property : IEnumerable<Product>
+        public IList<Dish>? Dishes { get; }
+        #endregion
+
+        #region Filtred Products property : IEnumerable<Product>
+        public IList<Dish>? FiltredDishes { get; set; }
         #endregion
 
         #region Selected DayRation field + property : DayRation
@@ -41,12 +47,56 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         }
         #endregion
 
-        #region Selected Product field + property : Product
-        private Dish? _selectedProduct;
-        public Dish SelectedProduct
+        #region Selected Dish field + property : Product
+        private Dish? _selectedDish;
+        public Dish SelectedDish
         {
-            get => _selectedProduct;
-            set => Set(ref _selectedProduct, value);
+            get => _selectedDish;
+            set => Set(ref _selectedDish, value);
+        }
+        #endregion
+        #region ProductFilterText : string
+        private string _productFilterText;
+
+        public string ProductFilterText
+        {
+            get => _productFilterText;
+            set
+            {
+                if(!Set(ref _productFilterText, value)) return;
+                if (Dishes != null)
+                {
+                    if (!string.IsNullOrWhiteSpace(value))
+                    {
+                        FiltredDishes = Dishes
+                        .Where(p => p.Name.Contains(_productFilterText, StringComparison.OrdinalIgnoreCase))
+                        .ToList();
+                    }
+                    else
+                        FiltredDishes = Dishes;
+                }
+                   
+                OnPropertyChanged(nameof(FiltredDishes));
+            }
+        }
+        #endregion
+
+        #region DishFilter
+        private void OnDishFiltred(object sender, FilterEventArgs e)
+        {
+            if(!(e.Item is Dish dish))
+            {
+                e.Accepted = false;
+                return;
+            }
+
+            var filtredText = _productFilterText;
+            if (string.IsNullOrWhiteSpace(filtredText))
+                return;
+
+            if (dish.Name.Contains(filtredText, StringComparison.OrdinalIgnoreCase)) return;
+
+            e.Accepted = false;
         }
         #endregion
 
@@ -55,15 +105,18 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         #endregion
 
         #region Commands
-        #region Delete product command
+        #region Delete dish command
         public ICommand DeleteProductCommand { get; }
         private bool CanDeleteProductCommandExecute(object p) => p is Dish product && 
-            Products != null && Products.Contains(product);
+            Dishes != null && Dishes.Contains(product);
         private void OnDeleteProductCommandExecuted(object p)
         {
             if (!(p is Dish product)) return;
-            Products.Remove(product);
+            Dishes.Remove(product);
         }
+        #endregion
+        #region SearchCommand
+        public ICommand SearchDishCommand { get; }
         #endregion
         #endregion
 
@@ -75,6 +128,7 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
                 CanDeleteProductCommandExecute);
 
             #endregion
+
             Dish tomato = new Dish()
             {
                 Name = "Tomato",
@@ -135,7 +189,7 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
             Dish[] Prds = new Dish[] { tomato, egg, chicken, pasta };
             DayRation[] DRArr = new DayRation[] { day1, day2, day3 };
             DayRations = new ObservableCollection<DayRation>(DRArr.OrderBy(x => x.Date));
-            Products = new ObservableCollection<Dish>(Prds.OrderBy(x => x.Name));  
+            Dishes = new List<Dish>(Prds.OrderBy(x => x.Name));  
         }
     }
 }
