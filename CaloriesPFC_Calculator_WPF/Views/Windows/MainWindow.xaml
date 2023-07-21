@@ -66,7 +66,8 @@
                     <GroupBox Header="Your Dishes" Grid.Column="0" Grid.Row="1">
                         <DockPanel>
                             <DockPanel DockPanel.Dock="Top">
-                                <TextBox Text="Find dish"/>
+                                <TextBox Text="Search" IsReadOnly="True"/>
+                                <TextBox />
                             </DockPanel>
                             <ListBox 
                                  ItemsSource="{Binding Products}"
