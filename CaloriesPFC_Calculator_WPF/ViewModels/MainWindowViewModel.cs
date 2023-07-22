@@ -65,21 +65,21 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
             set => Set(ref _selectedDish, value);
         }
         #endregion
-        #region ProductFilterText : string
-        private string _productFilterText;
 
-        public string ProductFilterText
+        #region DishFilterText : string
+        private string _dishFilterText;
+
+        public string DishFilterText
         {
-            get => _productFilterText;
+            get => _dishFilterText;
             set
             {
-                if(!Set(ref _productFilterText, value)) return;
+                if(!Set(ref _dishFilterText, value)) return;
                 OnPropertyChanged(nameof(FiltredDishes));
                 
             }
         }
         #endregion
-
 
         #region Dates property : DateTime
         public ObservableCollection<DateTime>? Dates { get; }
