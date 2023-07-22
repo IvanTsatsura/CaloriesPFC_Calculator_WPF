@@ -12,6 +12,8 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Navigation;
+using System.Xml.Serialization;
 
 namespace CaloriesPFC_Calculator_WPF.ViewModels
 {
@@ -44,7 +46,11 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
                     _filtredDishes = Dishes;
                 return _filtredDishes;
             }
-            set => Set(ref _filtredDishes, value); 
+            set
+            {
+                if (!Set(ref _filtredDishes, value)) return;
+                OnPropertyChanged(nameof(FiltredDishes));
+            }
         }
         #endregion
 
@@ -81,11 +87,21 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         }
         #endregion
 
+        #region For create new dish properties : dish
+        public string? NewDishName { get; set; }
+        public string? NewDishCalories { get; set; }
+        public string? NewDishProteins { get; set; }
+        public string? NewDishFats { get; set; }
+        public string? NewDishCarbohydrates { get; set; }
+        public string? NewDishWeightGrams { get; set; } = "100";
+        #endregion
+
         #region Dates property : DateTime
         public ObservableCollection<DateTime>? Dates { get; }
         #endregion
 
         #region Commands
+
         #region Delete dish command
         public ICommand DeleteDishCommand { get; }
         private bool CanDeleteDishCommandExecute(object p) => p is Dish dish && 
@@ -111,6 +127,47 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
             OnPropertyChanged(nameof(FiltredDishes));
         }
         #endregion
+
+        #region Create dish command
+        public ICommand CreateDishCommand { get; }
+        private bool CanCreateDishCommandExecute(object p) => NewDishName != null && NewDishCalories != null &&
+            NewDishCarbohydrates != null && NewDishProteins != null && NewDishFats != null &&
+            NewDishWeightGrams != null;
+        private void OnCreateDishCommandExecuted(object p)
+        {
+            Dish newDish = new Dish();
+            try
+            {
+                newDish.Name = (string)NewDishName;
+                newDish.Calories = float.Parse(NewDishCalories);
+                newDish.Proteins = float.Parse(NewDishProteins);
+                newDish.Fats = float.Parse(NewDishFats);
+                newDish.Carbohydrates = float.Parse(NewDishCarbohydrates);
+                newDish.WeightGrams = float.Parse(NewDishWeightGrams);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            
+            if (Dishes != null)
+                Dishes.Add(newDish);
+            
+            NewDishName = " ";
+            NewDishCalories = " ";
+            NewDishProteins = " ";
+            NewDishFats = " ";
+            NewDishCarbohydrates = " ";
+            NewDishWeightGrams = "100";
+            OnPropertyChanged(nameof(NewDishName));
+            OnPropertyChanged(nameof(NewDishCalories));
+            OnPropertyChanged(nameof(NewDishProteins));
+            OnPropertyChanged(nameof(NewDishFats));
+            OnPropertyChanged(nameof(NewDishCarbohydrates));
+            OnPropertyChanged(nameof(NewDishWeightGrams));
+        }
+        #endregion
+
         #endregion
 
         public MainWindowViewModel()
@@ -121,9 +178,11 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
                 CanDeleteDishCommandExecute);
             SearchDishCommand = new RelayCommand(OnSearchProductCommandExecuted,
                 CanSearchProductCommandExecute);
+            CreateDishCommand = new RelayCommand(OnCreateDishCommandExecuted,
+                CanCreateDishCommandExecute);
 
             #endregion
-
+            
             Dish tomato = new Dish()
             {
                 Name = "Tomato",
