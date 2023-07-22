@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:CaloriesPFC_Calculator_WPF.ViewModels"
+        xmlns:rules="clr-namespace:CaloriesPFC_Calculator_WPF.Infrastracture.ValidationRules"
         xmlns:local="clr-namespace:CaloriesPFC_Calculator_WPF"
         mc:Ignorable="d"
         Title="{Binding Path=Title}"
@@ -84,24 +85,59 @@
                                 Grid.Column="1" Grid.Row="0"/>
                             <TextBlock Text="Calories: "
                                        Grid.Column="0" Grid.Row="1"/>
-                            <TextBox Text="{Binding NewDishCalories, UpdateSourceTrigger=PropertyChanged}"
-                                Grid.Column="1" Grid.Row="1"/>
+                            <TextBox Grid.Column="1" Grid.Row="1">
+                                <TextBox.Text>
+                                    <Binding Path="NewDishCalories" UpdateSourceTrigger="PropertyChanged" >
+                                        <Binding.ValidationRules>
+                                            <rules:FloatValidationRule/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
                             <TextBlock Text="Proteins: "
                                        Grid.Column="0" Grid.Row="2"/>
-                            <TextBox Text="{Binding NewDishProteins, UpdateSourceTrigger=PropertyChanged}"
-                                Grid.Column="1" Grid.Row="2"/>
+                            <TextBox Grid.Column="1" Grid.Row="2">
+                                <TextBox.Text>
+                                    <Binding Path="NewDishProteins" UpdateSourceTrigger="PropertyChanged" >
+                                        <Binding.ValidationRules>
+                                            <rules:FloatValidationRule/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
                             <TextBlock Text="Fats: "
                                        Grid.Column="0" Grid.Row="3"/>
-                            <TextBox Text="{Binding NewDishFats, UpdateSourceTrigger=PropertyChanged}"
-                                Grid.Column="1" Grid.Row="3"/>
+                            <TextBox Grid.Column="1" Grid.Row="3">
+                                <TextBox.Text>
+                                    <Binding Path="NewDishFats" UpdateSourceTrigger="PropertyChanged" >
+                                        <Binding.ValidationRules>
+                                            <rules:FloatValidationRule/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
                             <TextBlock Text="Carbohydrates: "
                                        Grid.Column="0" Grid.Row="4"/>
-                            <TextBox Text="{Binding NewDishCarbohydrates, UpdateSourceTrigger=PropertyChanged}"
-                                Grid.Column="1" Grid.Row="4"/>
+                            <TextBox Grid.Column="1" Grid.Row="4">
+                                <TextBox.Text>
+                                    <Binding Path="NewDishCarbohydrates" UpdateSourceTrigger="PropertyChanged" >
+                                        <Binding.ValidationRules>
+                                            <rules:FloatValidationRule/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
                             <TextBlock Text="Weight(grams): "
                                        Grid.Column="0" Grid.Row="5"/>
-                            <TextBox x:Name="addWeight" Text="{Binding NewDishWeightGrams, UpdateSourceTrigger=PropertyChanged}"
-                                Grid.Column="1" Grid.Row="5"/>
+                            <TextBox Grid.Column="1" Grid.Row="5">
+                                <TextBox.Text>
+                                    <Binding Path="NewDishWeightGrams" UpdateSourceTrigger="PropertyChanged" >
+                                        <Binding.ValidationRules>
+                                            <rules:FloatValidationRule/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
                             <Button Content="Save" Width="80"
                                     Command="{Binding CreateDishCommand}"
                                     Margin="0, 3"
