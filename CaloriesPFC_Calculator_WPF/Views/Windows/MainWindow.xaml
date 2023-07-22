@@ -115,7 +115,7 @@
                                 Text="Weight(grams):"/>
                             <TextBlock Grid.Row="4" Grid.Column="1"
                                        Text="{Binding SelectedDish.WeightGrams}"/>
-                            <Button Grid.Row="6" Grid.Column="1"
+                            <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
                                     Content="Remove product" Width="150"
                                     Command="{Binding DeleteDishCommand}"
                                     CommandParameter="{Binding SelectedDish}"/>
