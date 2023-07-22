@@ -60,11 +60,52 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="160"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <GroupBox Header="Add new dish" Grid.Column="0" Grid.Row="0">
-                        
+                        <Grid Margin="0, 3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="85"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Name: "
+                                       Grid.Column="0" Grid.Row="0"/>
+                            <TextBox 
+                                Grid.Column="1" Grid.Row="0"/>
+                            <TextBlock Text="Calories: "
+                                       Grid.Column="0" Grid.Row="1"/>
+                            <TextBox 
+                                Grid.Column="1" Grid.Row="1"/>
+                            <TextBlock Text="Proteins: "
+                                       Grid.Column="0" Grid.Row="2"/>
+                            <TextBox 
+                                Grid.Column="1" Grid.Row="2"/>
+                            <TextBlock Text="Fats: "
+                                       Grid.Column="0" Grid.Row="3"/>
+                            <TextBox 
+                                Grid.Column="1" Grid.Row="3"/>
+                            <TextBlock Text="Carbohydrates: "
+                                       Grid.Column="0" Grid.Row="4"/>
+                            <TextBox 
+                                Grid.Column="1" Grid.Row="4"/>
+                            <TextBlock Text="Weight(grams): "
+                                       Grid.Column="0" Grid.Row="5"/>
+                            <TextBox Text="100"
+                                Grid.Column="1" Grid.Row="5"/>
+                            <Button Content="Save" Width="80"
+                                    Margin="0, 3"
+                                    Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2"/>
+                        </Grid>
                     </GroupBox>
                     <GroupBox Header="Your Dishes" Grid.Column="0" Grid.Row="1">
                         <DockPanel>
