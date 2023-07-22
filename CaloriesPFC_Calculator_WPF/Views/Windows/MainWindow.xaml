@@ -68,8 +68,8 @@
                             <DockPanel DockPanel.Dock="Top">
                                 <Button Content="Search" 
                                         Command="{Binding SearchDishCommand}"
-                                        CommandParameter="{Binding ElementName=ForSearchBox}"/>
-                                <TextBox x:Name="ForSearchBox"/>
+                                        CommandParameter="{Binding ProductFilterText}"/>
+                                <TextBox x:Name="ForSearchBox" Text="{Binding ProductFilterText}"/>
                             </DockPanel>
                             <ListBox 
                                 SelectedIndex="0"

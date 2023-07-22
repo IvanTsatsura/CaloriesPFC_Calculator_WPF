@@ -35,7 +35,17 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         #endregion
 
         #region Filtred Products property : IEnumerable<Product>
-        public IList<Dish>? FiltredDishes { get; set; }
+        private IList<Dish> _filtredDishes;
+        public IList<Dish>? FiltredDishes 
+        {
+            get
+            {
+                if (_filtredDishes == null)
+                    _filtredDishes = Dishes;
+                return _filtredDishes;
+            }
+            set => Set(ref _filtredDishes, value); 
+        }
         #endregion
 
         #region Selected DayRation field + property : DayRation
@@ -64,41 +74,12 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
             set
             {
                 if(!Set(ref _productFilterText, value)) return;
-                if (Dishes != null)
-                {
-                    if (!string.IsNullOrWhiteSpace(value))
-                    {
-                        FiltredDishes = Dishes
-                        .Where(p => p.Name.Contains(_productFilterText, StringComparison.OrdinalIgnoreCase))
-                        .ToList();
-                    }
-                    else
-                        FiltredDishes = Dishes;
-                }
-                   
                 OnPropertyChanged(nameof(FiltredDishes));
+                
             }
         }
         #endregion
 
-        #region DishFilter
-        private void OnDishFiltred(object sender, FilterEventArgs e)
-        {
-            if(!(e.Item is Dish dish))
-            {
-                e.Accepted = false;
-                return;
-            }
-
-            var filtredText = _productFilterText;
-            if (string.IsNullOrWhiteSpace(filtredText))
-                return;
-
-            if (dish.Name.Contains(filtredText, StringComparison.OrdinalIgnoreCase)) return;
-
-            e.Accepted = false;
-        }
-        #endregion
 
         #region Dates property : DateTime
         public ObservableCollection<DateTime>? Dates { get; }
@@ -118,8 +99,7 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
 
         #region SearchCommand
         public ICommand SearchDishCommand { get; }
-        private bool CanSearchProductCommandExecute(object p) => p is string name && 
-            !string.IsNullOrEmpty(name) && !string.IsNullOrWhiteSpace(name);
+        private bool CanSearchProductCommandExecute(object p) => true;
         private void OnSearchProductCommandExecuted(object p)
         {
             if (!(p is string name)) return;
