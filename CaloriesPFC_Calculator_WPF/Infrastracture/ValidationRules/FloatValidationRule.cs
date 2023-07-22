@@ -1,33 +1,29 @@
 ﻿using System;
 using System.Globalization;
+using System.Text.RegularExpressions;
 using System.Windows.Controls;
 
 namespace CaloriesPFC_Calculator_WPF.Infrastracture.ValidationRules
 {
-    class WeightValidationRule : ValidationRule
+    class FloatValidationRule : ValidationRule
     {
-        private const float MIN_POS_WEIGHT = 0.0f;
-
-        public WeightValidationRule()
+        public FloatValidationRule()
         {
         }
 
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            float weight = MIN_POS_WEIGHT;
+            string pattern = @"^[0-9]*(?:\.[0-9]*)?$";
+            Regex regex = new Regex(pattern);
             try
             {
                 if (((string)value).Length >= 0)
-                    weight = float.Parse((string)value);
+                    if (!regex.IsMatch((string)value))
+                        throw new Exception();
             }
-            catch (Exception e) 
+            catch (Exception e)
             {
                 return new ValidationResult(false, $"Illegal characters or {e.Message}");
-            }
-
-            if (weight < MIN_POS_WEIGHT)
-            {
-                return new ValidationResult(false, $"Please enter a weight greater than {MIN_POS_WEIGHT}");
             }
 
             return ValidationResult.ValidResult;
