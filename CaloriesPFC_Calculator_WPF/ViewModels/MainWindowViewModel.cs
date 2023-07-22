@@ -34,7 +34,7 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         public IList<Dish>? Dishes { get; }
         #endregion
 
-        #region Filtred Products property : IEnumerable<Product>
+        #region Filtred Dishes property : IEnumerable<Product>
         private IList<Dish> _filtredDishes;
         public IList<Dish>? FiltredDishes 
         {
