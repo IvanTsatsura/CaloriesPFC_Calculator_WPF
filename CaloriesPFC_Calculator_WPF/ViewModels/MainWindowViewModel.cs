@@ -75,8 +75,8 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
             set
             {
                 if(!Set(ref _dishFilterText, value)) return;
-                OnPropertyChanged(nameof(FiltredDishes));
-                
+                /*OnPropertyChanged(nameof(FiltredDishes));*/
+                SearchDishCommand.Execute(value);
             }
         }
         #endregion
@@ -99,7 +99,8 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
 
         #region SearchCommand
         public ICommand SearchDishCommand { get; }
-        private bool CanSearchProductCommandExecute(object p) => true;
+        private bool CanSearchProductCommandExecute(object p) => p is string name &&
+            !string.IsNullOrEmpty(name);
         private void OnSearchProductCommandExecuted(object p)
         {
             if (!(p is string name)) return;

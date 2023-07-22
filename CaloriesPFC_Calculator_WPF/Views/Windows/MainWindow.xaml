@@ -63,13 +63,14 @@
                         <RowDefinition Height="150"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
+                    <GroupBox Header="Add new dish" Grid.Column="0" Grid.Row="0">
+                        
+                    </GroupBox>
                     <GroupBox Header="Your Dishes" Grid.Column="0" Grid.Row="1">
                         <DockPanel>
                             <DockPanel DockPanel.Dock="Top">
-                                <Button Content="Search" 
-                                        Command="{Binding SearchDishCommand}"
-                                        CommandParameter="{Binding DishFilterText}"/>
-                                <TextBox x:Name="ForSearchBox" Text="{Binding DishFilterText}"/>
+                                <TextBox Text="Search" IsReadOnly="True"/>
+                                <TextBox x:Name="ForSearchBox" Text="{Binding DishFilterText, UpdateSourceTrigger=PropertyChanged}"/>
                             </DockPanel>
                             <ListBox 
                                 SelectedIndex="0"
