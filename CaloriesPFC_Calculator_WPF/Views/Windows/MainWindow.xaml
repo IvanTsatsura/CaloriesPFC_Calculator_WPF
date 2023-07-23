@@ -138,10 +138,19 @@
                                     </Binding>
                                 </TextBox.Text>
                             </TextBox>
-                            <Button Content="Save" Width="80"
-                                    Command="{Binding CreateDishCommand}"
-                                    Margin="0, 3"
-                                    Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2"/>
+                            <DockPanel Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2"
+                                       Height="auto">
+                                <Button Content="Save" Width="80"
+                                        DockPanel.Dock="Left"
+                                        Height="auto" 
+                                        Command="{Binding CreateDishCommand}"
+                                        Margin="25, 3, 0, 3"/>
+                                <Button Content="Cancel" Width="80"
+                                        DockPanel.Dock="Right"
+                                        Height="auto" 
+                                        Command="{Binding ClearAddFormCommand}"
+                                        Margin="0, 3"/>
+                            </DockPanel>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="Your Dishes" Grid.Column="0" Grid.Row="1">

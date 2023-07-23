@@ -171,7 +171,17 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
             
             if (Dishes != null)
                 Dishes.Add(newDish);
-            
+
+            ClearAddFormCommand.Execute(this);
+        }
+        #endregion
+
+        #region ClearCreateNewDishFormCommand
+
+        public ICommand ClearAddFormCommand { get; }
+        private bool CanClearAddFormCommandExecute(object p) => true;
+        private void OnClearAddFormCommandExecuted(object p)
+        {
             NewDishName = " ";
             NewDishCalories = " ";
             NewDishProteins = " ";
@@ -185,7 +195,9 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
             OnPropertyChanged(nameof(NewDishCarbohydrates));
             OnPropertyChanged(nameof(NewDishWeightGrams));
         }
+
         #endregion
+
 
         #endregion
 
@@ -199,6 +211,8 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
                 CanSearchProductCommandExecute);
             CreateDishCommand = new RelayCommand(OnCreateDishCommandExecuted,
                 CanCreateDishCommandExecute);
+            ClearAddFormCommand = new RelayCommand(OnClearAddFormCommandExecuted, 
+                CanClearAddFormCommandExecute); ;
 
             #endregion
             
