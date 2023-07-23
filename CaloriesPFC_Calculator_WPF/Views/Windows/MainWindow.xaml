@@ -52,8 +52,10 @@
             </StatusBarItem>
         </StatusBar>
         
-        <TabControl DockPanel.Dock="Top" SelectedIndex="1">
-            <TabItem  Header="Today"></TabItem>
+        <TabControl DockPanel.Dock="Top" SelectedIndex="0">
+            <TabItem  Header="Today">
+                
+            </TabItem>
             <TabItem  Header="Dishes">
                 <Grid>
                     <Grid.ColumnDefinitions>
