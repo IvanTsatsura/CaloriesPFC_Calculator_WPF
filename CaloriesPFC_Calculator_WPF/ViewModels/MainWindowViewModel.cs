@@ -130,9 +130,28 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
 
         #region Create dish command
         public ICommand CreateDishCommand { get; }
-        private bool CanCreateDishCommandExecute(object p) => NewDishName != null && NewDishCalories != null &&
-            NewDishCarbohydrates != null && NewDishProteins != null && NewDishFats != null &&
-            NewDishWeightGrams != null;
+        private bool CanCreateDishCommandExecute(object p)
+        {
+            string pattern = @"^[0-9]*(?:\.[0-9]*)?$";
+            Regex regex = new Regex(pattern);
+            if (NewDishCalories is null || NewDishCalories=="" ||
+                !regex.IsMatch(NewDishCalories))
+                return false;
+            if (NewDishProteins is null || NewDishProteins == "" ||
+                !regex.IsMatch(NewDishProteins))
+                return false;
+            if (NewDishFats is null || NewDishFats == "" ||
+                !regex.IsMatch(NewDishFats))
+                return false;
+            if (NewDishCarbohydrates is null || NewDishCarbohydrates == "" ||
+                !regex.IsMatch(NewDishCarbohydrates))
+                return false;
+            if (NewDishWeightGrams is null || NewDishWeightGrams == "" ||
+                !regex.IsMatch(NewDishWeightGrams))
+                return false;
+
+            return true;
+        }
         private void OnCreateDishCommandExecuted(object p)
         {
             Dish newDish = new Dish();
