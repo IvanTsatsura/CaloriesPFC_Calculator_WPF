@@ -252,6 +252,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="250"/>
                         <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -308,10 +309,12 @@
                             <TextBlock Text="Sex:"
                                 Grid.Column="0" Grid.Row="3"/>
                             <ComboBox Grid.Column="1" Grid.Row="3"
+                                      SelectedItem="{Binding Calculator.Sex}"
                                       ItemsSource="{Binding Source={be:EnumBindingSource {x:Type es:Sex}}}"/>
                             <TextBlock Text="PhysicalActivities:" 
                                 Grid.Column="0" Grid.Row="4"/>
                             <ComboBox Grid.Column="1" Grid.Row="4"
+                                      SelectedItem="{Binding Calculator.PhysicalActivity}"
                                       ItemsSource="{Binding Source={be:EnumBindingSource {x:Type es:PhysicalActivity}}}"/>
                             <Button Content="Calculate"
                                     Command="{Binding CalculateIntakeCommand}"
@@ -319,6 +322,19 @@
                             <Button Content="Cancel"
                                     Command="{Binding ClearCalculateFormCommand}"
                                     Grid.Column="1" Grid.Row="5"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Your Daily Intake"
+                              Grid.Column="1" Grid.Row="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0"
+                                Text="{Binding DailyIntake.DailyCaloriesIntake,
+                                UpdateSourceTrigger=PropertyChanged}"/>
                         </Grid>
                     </GroupBox>
                 </Grid>
