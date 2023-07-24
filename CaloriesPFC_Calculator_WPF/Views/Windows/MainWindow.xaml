@@ -52,7 +52,7 @@
             </StatusBarItem>
         </StatusBar>
         
-        <TabControl DockPanel.Dock="Top" SelectedIndex="0">
+        <TabControl DockPanel.Dock="Top" SelectedIndex="3">
             <TabItem  Header="Today">
                 
             </TabItem>
@@ -161,7 +161,7 @@
                                 <TextBox Text="Search" IsReadOnly="True"/>
                                 <TextBox x:Name="ForSearchBox" Text="{Binding DishFilterText, UpdateSourceTrigger=PropertyChanged}"/>
                             </DockPanel>
-                            <ListBox 
+                            <ListBox x:Name="disheslist"
                                 SelectedIndex="0"
                                  ItemsSource="{Binding FiltredDishes, UpdateSourceTrigger=PropertyChanged}"
                                  DisplayMemberPath="Name"
@@ -245,7 +245,54 @@
                     </GroupBox>
                 </Grid>
             </TabItem>
-            <TabItem  Header="Calculator"></TabItem>
+            <TabItem  Header="Calculator">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <GroupBox Header="Calculate Your Daily Intake"
+                        Grid.Row="0" Grid.Column="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Age:"
+                                Grid.Column="0" Grid.Row="0"/>
+                            <TextBox Grid.Column="1" Grid.Row="0"/>
+                            <TextBlock Text="Height(Cm):"
+                                Grid.Column="0" Grid.Row="1"/>
+                            <TextBox Grid.Column="1" Grid.Row="1"/>
+                            <TextBlock Text="Weight(Kg):" 
+                                Grid.Column="0" Grid.Row="2"/>
+                            <TextBox Grid.Column="1" Grid.Row="2"/>
+                            <TextBlock Text="Sex:"
+                                Grid.Column="0" Grid.Row="3"/>
+                            <ComboBox Grid.Column="1" Grid.Row="3"/>
+                            <TextBlock Text="PhysicalActivities:" 
+                                Grid.Column="0" Grid.Row="4"/>
+                            <ComboBox Grid.Column="1" Grid.Row="4"/>
+                            <Button Content="Calculate"
+                                    Grid.Column="0" Grid.Row="5"/>
+                            <Button Content="Cancel"
+                                    Grid.Column="1" Grid.Row="5"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
         </TabControl>
 
     </DockPanel>
