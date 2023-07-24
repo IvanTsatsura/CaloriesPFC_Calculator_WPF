@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Navigation;
@@ -100,6 +101,19 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         public ObservableCollection<DateTime>? Dates { get; }
         #endregion
 
+        #region Calculate DailyIntake field + property : DailyIntake
+        private DailyIntake _dailyIntake;
+        public DailyIntake DailyIntake
+        {
+            get { return _dailyIntake; }
+            set
+            {
+                if(!Set(ref _dailyIntake, value)) return;
+                OnPropertyChanged(nameof(DailyIntake));
+            }
+        }
+        #endregion
+
         #region Commands
 
         #region Delete dish command
@@ -110,6 +124,8 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         {
             if (!(p is Dish dish)) return;
             Dishes.Remove(dish);
+            FiltredDishes = new List<Dish>();
+            FiltredDishes = Dishes;
         }
         #endregion
 
@@ -171,7 +187,8 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
             
             if (Dishes != null)
                 Dishes.Add(newDish);
-
+            FiltredDishes = new List<Dish>();
+            FiltredDishes = Dishes;
             ClearAddFormCommand.Execute(this);
         }
         #endregion
