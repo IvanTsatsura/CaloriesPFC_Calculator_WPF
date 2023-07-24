@@ -12,10 +12,10 @@ namespace CaloriesPFC_Calculator_WPF.Models
         public PhysicalActivity PhysicalActivity { get; set; }
         
         public Calculator() { }
-        public Calculator(float height, float weight, int age, Sex sex, PhysicalActivity physicalActivity)
+        public Calculator(float heightCm, float weightKg, int age, Sex sex, PhysicalActivity physicalActivity)
         {
-            HeightCm = height;
-            WeightKg = weight;
+            HeightCm = heightCm;
+            WeightKg = weightKg;
             Age = age;
             Sex = sex;
             PhysicalActivity = physicalActivity;
