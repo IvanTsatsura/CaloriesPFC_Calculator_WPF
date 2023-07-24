@@ -333,7 +333,7 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0"
-                                Text="{Binding DailyIntake.DailyCaloriesIntake,
+                                Text="{Binding DailyIntake.Calories,
                                 UpdateSourceTrigger=PropertyChanged}"/>
                         </Grid>
                     </GroupBox>

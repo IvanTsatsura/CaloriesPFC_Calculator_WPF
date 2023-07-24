@@ -25,18 +25,18 @@ namespace CaloriesPFC_Calculator_WPF.Models
         public DailyIntake GetDailyIntake()
         {
             DailyIntake dailyIntake = new DailyIntake();
-            dailyIntake.DailyCaloriesIntake = (10 * WeightKg) +
+            dailyIntake.Calories = (10 * WeightKg) +
                     (6.25f * HeightCm) - (5 * Age);
             if (Sex == Sex.Male)
-                dailyIntake.DailyCaloriesIntake += 5f;
+                dailyIntake.Calories += 5f;
             else if (Sex == Sex.Female)
-                dailyIntake.DailyCaloriesIntake -= 161f;
+                dailyIntake.Calories -= 161f;
 
             ChangeIntakePhysicalActivity(dailyIntake, PhysicalActivity);
 
-            dailyIntake.DailyProteinsIntake = dailyIntake.DailyCaloriesIntake * 0.3f;
-            dailyIntake.DailyFatsIntake = dailyIntake.DailyCaloriesIntake * 0.3f;
-            dailyIntake.DailyCarbohydratesIntake = dailyIntake.DailyCaloriesIntake * 0.4f;
+            dailyIntake.Proteins = dailyIntake.Calories * 0.3f;
+            dailyIntake.Fats = dailyIntake.Calories * 0.3f;
+            dailyIntake.Carbohydrates = dailyIntake.Calories * 0.4f;
 
             return dailyIntake;
         }
@@ -47,19 +47,19 @@ namespace CaloriesPFC_Calculator_WPF.Models
             switch (physicalActivity)
             {
                 case PhysicalActivity.Absent:
-                    dailyIntake.DailyCaloriesIntake *= 1.2f;
+                    dailyIntake.Calories *= 1.2f;
                     break;
                 case PhysicalActivity.Low:
-                    dailyIntake.DailyCaloriesIntake *= 1.375f;
+                    dailyIntake.Calories *= 1.375f;
                     break;
                 case PhysicalActivity.Medium:
-                    dailyIntake.DailyCaloriesIntake *= 1.55f;
+                    dailyIntake.Calories *= 1.55f;
                     break;
                 case PhysicalActivity.High:
-                    dailyIntake.DailyCaloriesIntake *= 1.725f;
+                    dailyIntake.Calories *= 1.725f;
                     break;
                 case PhysicalActivity.SuperHigh:
-                    dailyIntake.DailyCaloriesIntake *= 1.9f;
+                    dailyIntake.Calories *= 1.9f;
                     break;
             }
 
