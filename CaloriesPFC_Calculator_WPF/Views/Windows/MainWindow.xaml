@@ -272,16 +272,40 @@
                             </Grid.RowDefinitions>
                             <TextBlock Text="Age:"
                                 Grid.Column="0" Grid.Row="0"/>
-                            <TextBox Grid.Column="1" Grid.Row="0"
-                                     Text="{Binding Calculator.Age}"/>
+                            <TextBox Grid.Column="1" Grid.Row="0">
+                                <TextBox.Text>
+                                    <Binding Path="CalculatorAge" UpdateSourceTrigger="PropertyChanged"
+                                             Mode="OneWayToSource">
+                                        <Binding.ValidationRules>
+                                            <rules:IntValidationRule/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
                             <TextBlock Text="Height(Cm):"
                                 Grid.Column="0" Grid.Row="1"/>
-                            <TextBox Grid.Column="1" Grid.Row="1"
-                                     Text="{Binding Calculator.HeightCm}"/>
+                            <TextBox Grid.Column="1" Grid.Row="1">
+                                <TextBox.Text>
+                                    <Binding Path="CalculatorHeight" UpdateSourceTrigger="PropertyChanged"
+                                             Mode="OneWayToSource">
+                                        <Binding.ValidationRules>
+                                            <rules:FloatValidationRule/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
                             <TextBlock Text="Weight(Kg):" 
                                 Grid.Column="0" Grid.Row="2"/>
-                            <TextBox Grid.Column="1" Grid.Row="2"
-                                     Text="{Binding Calculator.WeightKg}"/>
+                            <TextBox Grid.Column="1" Grid.Row="2">
+                                <TextBox.Text>
+                                    <Binding Path="CalculatorWeight" UpdateSourceTrigger="PropertyChanged"
+                                             Mode="OneWayToSource">
+                                        <Binding.ValidationRules>
+                                            <rules:FloatValidationRule/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
                             <TextBlock Text="Sex:"
                                 Grid.Column="0" Grid.Row="3"/>
                             <ComboBox Grid.Column="1" Grid.Row="3"
