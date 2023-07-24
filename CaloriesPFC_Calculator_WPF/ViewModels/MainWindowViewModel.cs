@@ -253,7 +253,16 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         }
         #endregion
 
-        
+        #region Clear Calculate Form
+        public ICommand ClearCalculateForm { get; }
+        private bool CanClearCalculateFormExecute(object p) => true;
+        private void OnClearCalculateFormExecuted(object p)
+        {
+            CalculatorAge = "";
+            CalculatorHeight = "";
+            CalculatorWeight = "";
+        }
+        #endregion
 
         #endregion
 
