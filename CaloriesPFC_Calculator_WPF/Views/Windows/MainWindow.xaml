@@ -6,6 +6,8 @@
         xmlns:vm="clr-namespace:CaloriesPFC_Calculator_WPF.ViewModels"
         xmlns:rules="clr-namespace:CaloriesPFC_Calculator_WPF.Infrastracture.ValidationRules"
         xmlns:local="clr-namespace:CaloriesPFC_Calculator_WPF"
+        xmlns:be="clr-namespace:CaloriesPFC_Calculator_WPF.Infrastracture.Extensiones.BindingExtensiones"
+        xmlns:es="clr-namespace:CaloriesPFC_Calculator_WPF.Infrastracture.Enums"
         mc:Ignorable="d"
         Title="{Binding Path=Title}"
         Height="450" Width="800">
@@ -309,11 +311,11 @@
                             <TextBlock Text="Sex:"
                                 Grid.Column="0" Grid.Row="3"/>
                             <ComboBox Grid.Column="1" Grid.Row="3"
-                                      ItemsSource="{Binding Calculator.Sex}"/>
+                                      ItemsSource="{Binding Source={be:EnumBindingSource {x:Type es:Sex}}}"/>
                             <TextBlock Text="PhysicalActivities:" 
                                 Grid.Column="0" Grid.Row="4"/>
                             <ComboBox Grid.Column="1" Grid.Row="4"
-                                      ItemsSource="{Binding Calculator.PhysicalActivity}"/>
+                                      ItemsSource="{Binding Source={be:EnumBindingSource {x:Type es:PhysicalActivity}}}"/>
                             <Button Content="Calculate"
                                     Grid.Column="0" Grid.Row="5"/>
                             <Button Content="Cancel"
