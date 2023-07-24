@@ -114,6 +114,10 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         }
         #endregion
 
+        #region Calculator readonly field : Calculator
+        public Calculator Calculator { get; }
+        #endregion
+
         #region Commands
 
         #region Delete dish command
@@ -232,7 +236,9 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
                 CanClearAddFormCommandExecute); ;
 
             #endregion
-            
+
+            Calculator = new Calculator();
+
             Dish tomato = new Dish()
             {
                 Name = "Tomato",
