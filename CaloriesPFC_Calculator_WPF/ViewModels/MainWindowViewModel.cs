@@ -101,7 +101,7 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         public ObservableCollection<DateTime>? Dates { get; }
         #endregion
 
-        #region Calculate DailyIntake field + property : DailyIntake
+        #region Calculated DailyIntake field + property : DailyIntake
         private DailyIntake _dailyIntake;
         public DailyIntake DailyIntake
         {
