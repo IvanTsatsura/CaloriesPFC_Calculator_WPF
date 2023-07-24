@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO.Packaging;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -116,6 +117,12 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
 
         #region Calculator readonly field : Calculator
         public Calculator Calculator { get; }
+        #endregion
+
+        #region Calculator properties : string?
+        public string? CalculatorAge { get; set; }
+        public string? CalculatorHeight { get; set; }
+        public string? CalculatorWeight { get; set; }
         #endregion
 
         #region Commands
