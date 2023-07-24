@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.IO.Packaging;
 using System.Linq;
 using System.Text;
@@ -226,6 +227,33 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
 
         #endregion
 
+        #region Calculate DailyIntake Command
+        public ICommand CalculateIntakeCommand { get; }
+        private bool CanCalculateIntakeCommandExecute(object p)
+        {
+            string intPattern = @"^\d+$";
+            string floatPattern = @"^[0-9]*(?:\.[0-9]*)?$";
+            Regex regex = new Regex(intPattern);
+            if (CalculatorAge is null || CalculatorAge == "" || !regex.IsMatch(CalculatorAge))
+                return false;
+            regex = new Regex(floatPattern);
+            if (CalculatorHeight is null || CalculatorHeight == "" || !regex.IsMatch(CalculatorHeight))
+                return false;
+            if (CalculatorWeight is null || CalculatorWeight == "" || !regex.IsMatch(CalculatorWeight))
+                return false;
+            return true;
+        }
+        private void OnCalculateIntakeCommandExecuted(object p)
+        {
+            Calculator.Age = int.Parse(CalculatorAge);
+            Calculator.HeightCm = float.Parse(CalculatorHeight);
+            Calculator.WeightKg = float.Parse(CalculatorWeight);
+
+            DailyIntake = Calculator.GetDailyIntake();
+        }
+        #endregion
+
+        
 
         #endregion
 
