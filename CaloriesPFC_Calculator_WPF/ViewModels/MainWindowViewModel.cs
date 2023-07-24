@@ -250,17 +250,21 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
             Calculator.WeightKg = float.Parse(CalculatorWeight);
 
             DailyIntake = Calculator.GetDailyIntake();
+            ClearCalculateFormCommand.Execute(p);
         }
         #endregion
 
         #region Clear Calculate Form
-        public ICommand ClearCalculateForm { get; }
+        public ICommand ClearCalculateFormCommand { get; }
         private bool CanClearCalculateFormExecute(object p) => true;
         private void OnClearCalculateFormExecuted(object p)
         {
             CalculatorAge = "";
             CalculatorHeight = "";
             CalculatorWeight = "";
+            OnPropertyChanged(nameof(CalculatorAge));
+            OnPropertyChanged(nameof(CalculatorHeight));
+            OnPropertyChanged(nameof(CalculatorWeight));
         }
         #endregion
 
@@ -277,7 +281,11 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
             CreateDishCommand = new RelayCommand(OnCreateDishCommandExecuted,
                 CanCreateDishCommandExecute);
             ClearAddFormCommand = new RelayCommand(OnClearAddFormCommandExecuted, 
-                CanClearAddFormCommandExecute); ;
+                CanClearAddFormCommandExecute);
+            CalculateIntakeCommand = new RelayCommand(OnCalculateIntakeCommandExecuted,
+                CanCalculateIntakeCommandExecute);
+            ClearCalculateFormCommand = new RelayCommand(OnClearCalculateFormExecuted,
+                CanClearCalculateFormExecute);
 
             #endregion
 
