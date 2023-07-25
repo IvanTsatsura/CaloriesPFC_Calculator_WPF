@@ -31,6 +31,19 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         }
         #endregion
 
+        #region Current DailyIntake property : DailyIntake
+        private DailyIntake _currentDailyIntake;
+        public DailyIntake CurrentDailyIntake
+        {
+            get => _currentDailyIntake;
+            set
+            {
+                if (!Set(ref _currentDailyIntake, value)) return;
+                OnPropertyChanged(nameof(CurrentDailyIntake));
+            }
+        }
+        #endregion
+
         #region All DayRations property : IEnumerable<DayRation>
         public ObservableCollection<DayRation>? DayRations { get; }
         #endregion
@@ -125,6 +138,8 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         public string? CalculatorHeight { get; set; }
         public string? CalculatorWeight { get; set; }
         #endregion
+
+
 
         #region Commands
 
