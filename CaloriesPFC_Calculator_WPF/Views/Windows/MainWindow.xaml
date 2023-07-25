@@ -324,17 +324,44 @@
                                     Grid.Column="1" Grid.Row="5"/>
                         </Grid>
                     </GroupBox>
-                    <GroupBox Header="Your Daily Intake"
+                    <GroupBox Header="Calculated Daily Intake"
                               Grid.Column="1" Grid.Row="0">
                         <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0"
+                            <TextBlock Text="Calories:"
+                                       Grid.Column="0" Grid.Row="0"/>
+                            <TextBlock Grid.Column="1" Grid.Row="0"
                                 Text="{Binding DailyIntake.Calories,
                                 UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="Proteins:"
+                                       Grid.Column="0" Grid.Row="1"/>
+                            <TextBlock Grid.Column="1" Grid.Row="1"
+                                Text="{Binding DailyIntake.Proteins,
+                                UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="Fats:"
+                                       Grid.Column="0" Grid.Row="2"/>
+                            <TextBlock Grid.Column="1" Grid.Row="2"
+                                Text="{Binding DailyIntake.Fats,
+                                UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="Carbohydrates:"
+                                       Grid.Column="0" Grid.Row="3"/>
+                            <TextBlock Grid.Column="1" Grid.Row="3"
+                                Text="{Binding DailyIntake.Carbohydrates,
+                                UpdateSourceTrigger=PropertyChanged}"/>
+                            <Button Content="Save"
+                                    Grid.Column="0" Grid.Row="4"
+                                    Grid.ColumnSpan="2"
+                                    Width="80"/>
                         </Grid>
                     </GroupBox>
                 </Grid>
