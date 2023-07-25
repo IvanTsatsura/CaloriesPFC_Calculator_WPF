@@ -34,9 +34,10 @@ namespace CaloriesPFC_Calculator_WPF.Models
 
             ChangeIntakePhysicalActivity(dailyIntake, PhysicalActivity);
 
-            dailyIntake.Proteins = dailyIntake.Calories * 0.3f;
-            dailyIntake.Fats = dailyIntake.Calories * 0.3f;
-            dailyIntake.Carbohydrates = dailyIntake.Calories * 0.4f;
+            dailyIntake.Proteins = (float)Math.Round(dailyIntake.Calories * 0.3f / 4);
+            dailyIntake.Fats = (float)Math.Round(dailyIntake.Calories * 0.3f / 9);
+            dailyIntake.Carbohydrates = (float)Math.Round(dailyIntake.Calories * 0.4f / 4);
+            dailyIntake.Calories = (float)Math.Round(dailyIntake.Calories);
 
             return dailyIntake;
         }
