@@ -44,6 +44,19 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         }
         #endregion
 
+        #region Today Intake property : DailyIntake
+        private DailyIntake _todayIntake;
+        public DailyIntake TodayIntake
+        {
+            get => _todayIntake;
+            set
+            {
+                if (!Set(ref _todayIntake, value)) return;
+                OnPropertyChanged(nameof(TodayIntake)); 
+            }
+        }
+        #endregion
+
         #region All DayRations property : IEnumerable<DayRation>
         public ObservableCollection<DayRation>? DayRations { get; }
         #endregion
