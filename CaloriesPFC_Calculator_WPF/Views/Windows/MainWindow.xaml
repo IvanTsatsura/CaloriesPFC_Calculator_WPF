@@ -390,24 +390,36 @@
                                        Grid.Column="2" Grid.Row="0"/>
                             <TextBlock Text="Calories:"
                                        Grid.Column="0" Grid.Row="1"/>
-                            <TextBlock Grid.Column="2" Grid.Row="1"
-                                Text="{Binding CurrentDailyIntake.Calories,
-                                UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="{Binding TodayIntake.Calories,
+                                UpdateSourceTrigger=PropertyChanged}"
+                                Grid.Column="1" Grid.Row="1"/>
+                            <TextBlock Text="{Binding CurrentDailyIntake.Calories,
+                                UpdateSourceTrigger=PropertyChanged}"
+                                Grid.Column="2" Grid.Row="1"/>
+                            <TextBlock Text="{Binding TodayIntake.Proteins,
+                                UpdateSourceTrigger=PropertyChanged}"
+                                Grid.Column="1" Grid.Row="2"/>
                             <TextBlock Text="Proteins:"
                                        Grid.Column="0" Grid.Row="2"/>
-                            <TextBlock Grid.Column="2" Grid.Row="2"
-                                Text="{Binding CurrentDailyIntake.Proteins,
-                                UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="{Binding CurrentDailyIntake.Proteins,
+                                UpdateSourceTrigger=PropertyChanged}"
+                                Grid.Column="2" Grid.Row="2"/>
                             <TextBlock Text="Fats:"
                                        Grid.Column="0" Grid.Row="3"/>
-                            <TextBlock Grid.Column="2" Grid.Row="3"
-                                Text="{Binding CurrentDailyIntake.Fats,
-                                UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="{Binding TodayIntake.Fats,
+                                UpdateSourceTrigger=PropertyChanged}"
+                                Grid.Column="1" Grid.Row="3"/>
+                            <TextBlock Text="{Binding CurrentDailyIntake.Fats,
+                                UpdateSourceTrigger=PropertyChanged}"
+                                Grid.Column="2" Grid.Row="3"/>
                             <TextBlock Text="Carbohydrates:"
                                        Grid.Column="0" Grid.Row="4"/>
-                            <TextBlock Grid.Column="2" Grid.Row="4"
-                                Text="{Binding CurrentDailyIntake.Carbohydrates,
-                                UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="{Binding TodayIntake.Carbohydrates,
+                                UpdateSourceTrigger=PropertyChanged}"
+                                Grid.Column="1" Grid.Row="4"/>
+                            <TextBlock Text="{Binding CurrentDailyIntake.Carbohydrates,
+                                UpdateSourceTrigger=PropertyChanged}"
+                                Grid.Column="2" Grid.Row="4"/>
                         </Grid>
                     </GroupBox>
                 </Grid>
