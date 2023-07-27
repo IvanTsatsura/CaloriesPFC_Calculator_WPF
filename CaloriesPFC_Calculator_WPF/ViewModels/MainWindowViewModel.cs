@@ -318,7 +318,7 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
             #endregion
 
             Calculator = new Calculator();
-
+            TodayIntake = new DailyIntake();
             CurrentDailyIntake = new DailyIntake(2500f, 120f, 90f, 160f);
 
             Dish tomato = new Dish()
