@@ -130,8 +130,8 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         #endregion
 
         #region Calculated DailyIntake field + property : DailyIntake
-        private DailyIntake _dailyIntake;
-        public DailyIntake DailyIntake
+        private DailyIntake? _dailyIntake;
+        public DailyIntake? DailyIntake
         {
             get { return _dailyIntake; }
             set
@@ -151,8 +151,6 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         public string? CalculatorHeight { get; set; }
         public string? CalculatorWeight { get; set; }
         #endregion
-
-
 
         #region Commands
 
@@ -296,6 +294,16 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         }
         #endregion
 
+        #region Save Current Daily Intake Command
+        public ICommand SaveDailyIntake { get; }
+        private bool CanSaveDailyIntakeExecute(object p) => DailyIntake is not null;
+        private void OnSaveDailyIntakeExecuted(object p)
+        {
+            CurrentDailyIntake = DailyIntake;
+            DailyIntake = null;
+        }
+        #endregion
+
         #endregion
 
         public MainWindowViewModel()
@@ -314,12 +322,13 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
                 CanCalculateIntakeCommandExecute);
             ClearCalculateFormCommand = new RelayCommand(OnClearCalculateFormExecuted,
                 CanClearCalculateFormExecute);
-
+            SaveDailyIntake = new RelayCommand(OnSaveDailyIntakeExecuted,
+                CanSaveDailyIntakeExecute);
             #endregion
 
             Calculator = new Calculator();
-            TodayIntake = new DailyIntake();
-            CurrentDailyIntake = new DailyIntake(2500f, 120f, 90f, 160f);
+            _todayIntake = new DailyIntake();
+            _currentDailyIntake = new DailyIntake(2500f, 120f, 90f, 160f);
 
             Dish tomato = new Dish()
             {
