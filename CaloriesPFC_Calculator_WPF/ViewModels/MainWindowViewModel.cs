@@ -152,6 +152,19 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         public string? CalculatorWeight { get; set; }
         #endregion
 
+        #region Selected Dishes For Create New Meal
+        private IList<Dish> _selectedDishes;
+        public IList<Dish> SelectedDishes
+        {
+            get => SelectedDishes;
+            set
+            {
+                if(!Set(ref _selectedDishes, value)) return;
+                OnPropertyChanged(nameof(SelectedDish));
+            }
+        }
+        #endregion
+
         #region Commands
 
         #region Delete dish command
@@ -407,6 +420,7 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
             DayRation[] DRArr = new DayRation[] { day1, day2, day3 };
             DayRations = new ObservableCollection<DayRation>(DRArr.OrderBy(x => x.Date));
             Dishes = new List<Dish>(Prds.OrderBy(x => x.Name));  
+            SelectedDishes = new List<Dish>();
         }
     }
 }
