@@ -71,11 +71,10 @@
                         <DockPanel>
                             <DockPanel DockPanel.Dock="Top">
                                 <TextBox Text="Search" IsReadOnly="True"/>
-                                <TextBox x:Name="ForSearchBox" Text="{Binding DishFilterText, 
+                                <TextBox Text="{Binding DishFilterText, 
                                     UpdateSourceTrigger=PropertyChanged}"/>
                             </DockPanel>
-                            <ListBox x:Name="disheslist"
-                                SelectedIndex="0"
+                            <ListBox SelectedIndex="0"
                                  ItemsSource="{Binding FiltredDishes, UpdateSourceTrigger=PropertyChanged}"
                                  DisplayMemberPath="Name"
                                  SelectedItem="{Binding SelectedDish}">
@@ -119,7 +118,21 @@
                             <TextBlock Grid.Row="4" Grid.Column="1"
                                        Text="{Binding SelectedDish.WeightGrams}"/>
                             <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
-                                    Content="Add Dish" Width="80"/>
+                                    Content="Add Dish" Width="80"
+                                    Command="{Binding AddDishCommand}"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Create Meal"
+                              Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <ListBox ItemsSource="{Binding SelectedDishes, 
+                                    UpdateSourceTrigger=PropertyChanged}"
+                                 DisplayMemberPath="Name">
+                            </ListBox>
                         </Grid>
                     </GroupBox>
                 </Grid>
