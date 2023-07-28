@@ -152,7 +152,7 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         public string? CalculatorWeight { get; set; }
         #endregion
 
-        #region Selected Dishes For Create New Meal
+        #region Selected Dishes For Create New Meal property + field : IList<Dish> 
         private IList<Dish> _selectedDishes;
         public IList<Dish> SelectedDishes
         {
@@ -314,6 +314,15 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         {
             CurrentDailyIntake = DailyIntake;
             DailyIntake = null;
+        }
+        #endregion
+
+        #region Add Dish To Meal
+        public ICommand AddDishCommand { get; }
+        private bool CanAddDishCommandExecute(object p) => SelectedDish != null;
+        private void OnAddDishCommandExecuted(object p)
+        {
+            SelectedDishes.Add(SelectedDish);
         }
         #endregion
 
