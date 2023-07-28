@@ -54,9 +54,75 @@
             </StatusBarItem>
         </StatusBar>
 
-        <TabControl DockPanel.Dock="Top" SelectedIndex="3">
+        <TabControl DockPanel.Dock="Top" SelectedIndex="0">
             <TabItem  Header="Today">
-
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <GroupBox Header="Select Dish" 
+                              Grid.Column="0" Grid.Row="1">
+                        <DockPanel>
+                            <DockPanel DockPanel.Dock="Top">
+                                <TextBox Text="Search" IsReadOnly="True"/>
+                                <TextBox x:Name="ForSearchBox" Text="{Binding DishFilterText, 
+                                    UpdateSourceTrigger=PropertyChanged}"/>
+                            </DockPanel>
+                            <ListBox x:Name="disheslist"
+                                SelectedIndex="0"
+                                 ItemsSource="{Binding FiltredDishes, UpdateSourceTrigger=PropertyChanged}"
+                                 DisplayMemberPath="Name"
+                                 SelectedItem="{Binding SelectedDish}">
+                            </ListBox>
+                        </DockPanel>
+                    </GroupBox>
+                    <GroupBox Header="Selected Dish"
+                        Grid.Column="1" Grid.Row="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0"
+                                Text="Calories:"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1"
+                                       Text="{Binding SelectedDish.Calories}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0"
+                                Text="Proteins:"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1"
+                                       Text="{Binding SelectedDish.Proteins}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0"
+                                Text="Fats:"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1"
+                                       Text="{Binding SelectedDish.Fats}"/>
+                            <TextBlock Grid.Row="3" Grid.Column="0"
+                                Text="Carbohydrates:"/>
+                            <TextBlock Grid.Row="3" Grid.Column="1"
+                                       Text="{Binding SelectedDish.Carbohydrates}"/>
+                            <TextBlock Grid.Row="4" Grid.Column="0"
+                                Text="Weight(grams):"/>
+                            <TextBlock Grid.Row="4" Grid.Column="1"
+                                       Text="{Binding SelectedDish.WeightGrams}"/>
+                            <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
+                                    Content="Add Dish" Width="80"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
             </TabItem>
             <TabItem  Header="Dishes">
                 <Grid>
@@ -161,9 +227,9 @@
                         <DockPanel>
                             <DockPanel DockPanel.Dock="Top">
                                 <TextBox Text="Search" IsReadOnly="True"/>
-                                <TextBox x:Name="ForSearchBox" Text="{Binding DishFilterText, UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBox Text="{Binding DishFilterText, UpdateSourceTrigger=PropertyChanged}"/>
                             </DockPanel>
-                            <ListBox x:Name="disheslist"
+                            <ListBox 
                                 SelectedIndex="0"
                                  ItemsSource="{Binding FiltredDishes, UpdateSourceTrigger=PropertyChanged}"
                                  DisplayMemberPath="Name"
@@ -208,7 +274,7 @@
                             <TextBlock Grid.Row="4" Grid.Column="1"
                                        Text="{Binding SelectedDish.WeightGrams}"/>
                             <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
-                                    Content="Remove product" Width="150"
+                                    Content="Remove Product" Width="150"
                                     Command="{Binding DeleteDishCommand}"
                                     CommandParameter="{Binding SelectedDish}"/>
                         </Grid>
@@ -359,6 +425,7 @@
                                 Text="{Binding DailyIntake.Carbohydrates,
                                 UpdateSourceTrigger=PropertyChanged}"/>
                             <Button Content="Save"
+                                    Command="{Binding SaveDailyIntake}"
                                     Grid.Column="0" Grid.Row="4"
                                     Grid.ColumnSpan="2"
                                     Width="80"/>
