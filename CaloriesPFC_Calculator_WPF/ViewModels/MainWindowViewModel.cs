@@ -362,6 +362,22 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
                 Fats = 4.6f,
                 Carbohydrates = 71.0f
             };
+            Dish cucember = new Dish()
+            {
+                Name = "Cucember",
+                Calories = 33.5f,
+                Proteins = 4f,
+                Fats = 0.6f,
+                Carbohydrates = 7.0f
+            };
+            Dish peach = new Dish()
+            {
+                Name = "Peach",
+                Calories = 150.5f,
+                Proteins = 9f,
+                Fats = 4.6f,
+                Carbohydrates = 65.0f
+            };
 
             Meal meal1 = new Meal();
             meal1.Products = new Dish[] { tomato, egg };
@@ -387,7 +403,7 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
             day3.Meals = new Meal[] { meal1, meal2, meal3 };
             day3.Date = DateTime.Today.Date.AddDays(5);
 
-            Dish[] Prds = new Dish[] { tomato, egg, chicken, pasta };
+            Dish[] Prds = new Dish[] { tomato, egg, chicken, pasta, cucember, peach };
             DayRation[] DRArr = new DayRation[] { day1, day2, day3 };
             DayRations = new ObservableCollection<DayRation>(DRArr.OrderBy(x => x.Date));
             Dishes = new List<Dish>(Prds.OrderBy(x => x.Name));  
