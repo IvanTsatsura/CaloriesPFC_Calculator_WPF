@@ -156,7 +156,7 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         private IList<Dish> _selectedDishes;
         public IList<Dish> SelectedDishes
         {
-            get => SelectedDishes;
+            get => _selectedDishes;
             set
             {
                 if(!Set(ref _selectedDishes, value)) return;
@@ -323,6 +323,9 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         private void OnAddDishCommandExecuted(object p)
         {
             SelectedDishes.Add(SelectedDish);
+            var temp = SelectedDishes;
+            SelectedDishes = new List<Dish>();
+            SelectedDishes = temp;
         }
         #endregion
 
@@ -346,6 +349,8 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
                 CanClearCalculateFormExecute);
             SaveDailyIntake = new RelayCommand(OnSaveDailyIntakeExecuted,
                 CanSaveDailyIntakeExecute);
+            AddDishCommand = new RelayCommand(OnAddDishCommandExecuted,
+                CanAddDishCommandExecute);
             #endregion
 
             Calculator = new Calculator();
