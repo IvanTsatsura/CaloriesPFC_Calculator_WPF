@@ -165,6 +165,10 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         }
         #endregion
 
+        #region Meal For Add : Meal
+        public Meal Meal { get; set; }
+        #endregion
+
         #region Commands
 
         #region Delete dish command
@@ -326,6 +330,9 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
             var temp = SelectedDishes;
             SelectedDishes = new List<Dish>();
             SelectedDishes = temp;
+            Meal = new Meal();
+            Meal.Dishes = SelectedDishes;
+            OnPropertyChanged(nameof(Meal));
         }
         #endregion
 
@@ -418,15 +425,15 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
             };
 
             Meal meal1 = new Meal();
-            meal1.Products = new Dish[] { tomato, egg };
+            meal1.Dishes = new Dish[] { tomato, egg };
             meal1.Type = MealType.Breakfast;
 
             Meal meal2 = new Meal();
-            meal2.Products = new Dish[] { chicken, tomato };
+            meal2.Dishes = new Dish[] { chicken, tomato };
             meal2.Type = MealType.Lunch;
 
             Meal meal3 = new Meal();
-            meal3.Products = new Dish[] { chicken, tomato, pasta };
+            meal3.Dishes = new Dish[] { chicken, tomato, pasta };
             meal3.Type = MealType.Dinner;
 
             DayRation day1 = new DayRation();
