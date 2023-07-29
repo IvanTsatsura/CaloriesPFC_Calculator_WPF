@@ -342,6 +342,8 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         private void OnClearSelectedDishesCommandExecuted(object p)
         {
             SelectedDishes = new List<Dish>();
+            Meal = new Meal();
+            OnPropertyChanged(nameof(Meal));
         }
         #endregion
 
