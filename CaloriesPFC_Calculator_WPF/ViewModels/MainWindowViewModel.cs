@@ -329,6 +329,15 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         }
         #endregion
 
+        #region Clear Selected Dishes Command
+        public ICommand ClearSelectedDishesCommand { get; }
+        private bool CanClearSelectedDishesCommandExecute(object p) => SelectedDishes.Count > 0;
+        private void OnClearSelectedDishesCommandExecuted(object p)
+        {
+            SelectedDishes = new List<Dish>();
+        }
+        #endregion
+
         #endregion
 
         public MainWindowViewModel()
@@ -351,6 +360,8 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
                 CanSaveDailyIntakeExecute);
             AddDishCommand = new RelayCommand(OnAddDishCommandExecuted,
                 CanAddDishCommandExecute);
+            ClearSelectedDishesCommand = new RelayCommand(OnClearSelectedDishesCommandExecuted, 
+                CanClearSelectedDishesCommandExecute);
             #endregion
 
             Calculator = new Calculator();
