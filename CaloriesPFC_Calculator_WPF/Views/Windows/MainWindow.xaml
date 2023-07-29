@@ -145,7 +145,8 @@
                                         Command="{Binding ClearSelectedDishesCommand}"/>
                             </Grid>
                             <Grid 
-                                Grid.Column="1">
+                                Grid.Column="1"
+                                Margin="3, 0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
@@ -158,9 +159,10 @@
                                     <RowDefinition/>
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
-                                <TextBlock Text="Meals Nutrients:"
+                                <TextBlock Text="Meal Nutrients"
                                     Grid.Column="0" Grid.Row="0"
-                                           Grid.ColumnSpan="2"/>
+                                           Grid.ColumnSpan="2"
+                                           Margin="3, 0"/>
                                 <TextBlock Text="Calories:"
                                     Grid.Column="0" Grid.Row="1"/>
                                 <TextBlock Text="{Binding Meal.Calories}"
