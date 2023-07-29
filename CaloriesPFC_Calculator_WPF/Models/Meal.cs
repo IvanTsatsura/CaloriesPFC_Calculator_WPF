@@ -9,16 +9,16 @@ namespace CaloriesPFC_Calculator_WPF.Models
 {
     internal class Meal
     {
-        public IEnumerable<Dish>? Products { get; set; }
+        public IEnumerable<Dish>? Dishes { get; set; }
         public MealType Type { get; set; }
         public float Calories
         {
             get
             {
                 float tempCalories = 0f;
-                if (Products != null)
+                if (Dishes != null)
                 {
-                    foreach (Dish product in Products)
+                    foreach (Dish product in Dishes)
                     {
                         tempCalories += product.Calories;
                     }
@@ -32,9 +32,9 @@ namespace CaloriesPFC_Calculator_WPF.Models
             get
             {
                 float tempProteins = 0f;
-                if (Products != null)
+                if (Dishes != null)
                 {
-                    foreach (Dish product in Products)
+                    foreach (Dish product in Dishes)
                     {
                         tempProteins += product.Proteins;
                     }
@@ -48,9 +48,9 @@ namespace CaloriesPFC_Calculator_WPF.Models
             get
             {
                 float tempFats = 0f;
-                if (Products != null)
+                if (Dishes != null)
                 {
-                    foreach (Dish product in Products)
+                    foreach (Dish product in Dishes)
                     {
                         tempFats += product.Fats;
                     }
@@ -64,9 +64,9 @@ namespace CaloriesPFC_Calculator_WPF.Models
             get
             {
                 float tempCarbohydrates = 0f;
-                if (Products != null)
+                if (Dishes != null)
                 {
-                    foreach (Dish product in Products)
+                    foreach (Dish product in Dishes)
                     {
                         tempCarbohydrates += product.Carbohydrates;
                     }
@@ -80,9 +80,9 @@ namespace CaloriesPFC_Calculator_WPF.Models
             get
             {
                 float tempWeight = 0f;
-                if (Products != null)
+                if (Dishes != null)
                 {
-                    foreach (Dish product in Products)
+                    foreach (Dish product in Dishes)
                     {
                         tempWeight += product.WeightGrams;
                     }
