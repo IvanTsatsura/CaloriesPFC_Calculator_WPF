@@ -169,6 +169,10 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         public Meal Meal { get; set; }
         #endregion
 
+        #region Today Ration : DayRation
+        public DayRation TodayRation { get; set; }
+        #endregion
+
         #region Commands
 
         #region Delete dish command
