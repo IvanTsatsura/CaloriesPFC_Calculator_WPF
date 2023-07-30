@@ -183,7 +183,16 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         #endregion
 
         #region Today Ration : DayRation
-        public DayRation TodayRation { get; set; }
+        private DayRation _todayRation;
+        public DayRation TodayRation
+        {
+            get => _todayRation;
+            set
+            {
+                if(!Set(ref _todayRation, value)) return;
+                OnPropertyChanged(nameof(TodayRation));
+            }
+        }
         #endregion
 
         #region Commands
