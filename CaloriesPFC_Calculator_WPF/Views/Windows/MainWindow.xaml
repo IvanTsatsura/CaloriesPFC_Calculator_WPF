@@ -20,37 +20,69 @@
                 <TextBlock Text="Calories:" FontSize="14"/>
             </StatusBarItem>
             <StatusBarItem>
-                <ProgressBar Width="100" Height="14" Value="50"/>
+                <ProgressBar Width="100" Height="14"
+                             Minimum="0" Maximum="{Binding CurrentDailyIntake.Calories}" 
+                                         Value="{Binding TodayCalories}"/>
             </StatusBarItem>
             <StatusBarItem>
-                <TextBlock Text="value/value" FontSize="14"/>
+                <TextBlock Text="{Binding TodayCalories}" FontSize="14"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="/" FontSize="14"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="{Binding CurrentDailyIntake.Calories}" FontSize="14"/>
             </StatusBarItem>
             <StatusBarItem>
                 <TextBlock Text="Proteins:" FontSize="14"/>
             </StatusBarItem>
             <StatusBarItem>
-                <ProgressBar Width="100" Height="14" Value="30" />
+                <ProgressBar Width="100" Height="14"
+                             Minimum="0" Maximum="{Binding CurrentDailyIntake.Proteins}" 
+                                         Value="{Binding TodayProteins}"/>
             </StatusBarItem>
             <StatusBarItem>
-                <TextBlock Text="value/value" FontSize="14"/>
+                <TextBlock Text="{Binding TodayProteins}" FontSize="14"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="/" FontSize="14"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="{Binding CurrentDailyIntake.Proteins}" FontSize="14"/>
             </StatusBarItem>
             <StatusBarItem>
                 <TextBlock Text="Fats:" FontSize="14"/>
             </StatusBarItem>
             <StatusBarItem>
-                <ProgressBar Width="100" Height="14" Value="55" />
+                <ProgressBar Width="100" Height="14"
+                             Minimum="0" Maximum="{Binding CurrentDailyIntake.Fats}" 
+                                         Value="{Binding TodayFats}"/>
             </StatusBarItem>
             <StatusBarItem>
-                <TextBlock Text="value/value" FontSize="14"/>
+                <TextBlock Text="{Binding TodayFats}" FontSize="14"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="/" FontSize="14"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="{Binding CurrentDailyIntake.Fats}" FontSize="14"/>
             </StatusBarItem>
             <StatusBarItem>
                 <TextBlock Text="Сarbohydrates:" FontSize="14"/>
             </StatusBarItem>
             <StatusBarItem>
-                <ProgressBar Width="100" Height="14" Value="15"/>
+                <ProgressBar Width="100" Height="14"
+                             Minimum="0" Maximum="{Binding CurrentDailyIntake.Carbohydrates}" 
+                                         Value="{Binding TodayCarbohydrates}"/>
             </StatusBarItem>
             <StatusBarItem>
-                <TextBlock Text="value/value" FontSize="14"/>
+                <TextBlock Text="{Binding TodayCarbohydrates}" FontSize="14"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="/" FontSize="14"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="{Binding CurrentDailyIntake.Carbohydrates}" FontSize="14"/>
             </StatusBarItem>
         </StatusBar>
 
