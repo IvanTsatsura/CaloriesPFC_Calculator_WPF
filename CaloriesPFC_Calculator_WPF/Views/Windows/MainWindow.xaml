@@ -210,6 +210,44 @@
                             </DataGrid>
                         </Grid>
                     </GroupBox>
+                    <GroupBox Header="Today Nutrients"
+                              Grid.Column="0" Grid.Row="2"
+                              Grid.ColumnSpan="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Calories:"
+                                       Grid.Column="0" Grid.Row="0"/>
+                            <TextBlock Text="Proteins:"
+                                       Grid.Column="0" Grid.Row="1"/>
+                            <TextBlock Text="Fats:"
+                                       Grid.Column="0" Grid.Row="2"/>
+                            <TextBlock Text="Carbohydrates:"
+                                       Grid.Column="0" Grid.Row="3"/>
+                            <TextBlock Text="Weight(grams):"
+                                       Grid.Column="0" Grid.Row="4"/>
+                            <TextBlock Text="{Binding TodayCalories}"
+                                       Grid.Column="1" Grid.Row="0"/>
+                            <TextBlock Text="{Binding TodayProteins}"
+                                       Grid.Column="1" Grid.Row="1"/>
+                            <TextBlock Text="{Binding TodayFats}"
+                                       Grid.Column="1" Grid.Row="2"/>
+                            <TextBlock Text="{Binding TodayCarbohydrates}"
+                                       Grid.Column="1" Grid.Row="3"/>
+                            <TextBlock Text="{Binding TodayWeight}"
+                                       Grid.Column="1" Grid.Row="4"/>
+                        </Grid>
+                    </GroupBox>
                 </Grid>
             </TabItem>
             <TabItem  Header="Dishes">
