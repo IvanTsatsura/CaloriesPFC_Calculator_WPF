@@ -170,7 +170,16 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         #endregion
 
         #region Today Meals List property : List<Meal>
-        public List<Meal> TodayMeals { get; set; } 
+        private List<Meal> _todayMeals;
+        public List<Meal> TodayMeals
+        {
+            get => _todayMeals;
+            set
+            {
+                if(!Set(ref _todayMeals, value)) return;
+                OnPropertyChanged(nameof(TodayMeals));
+            }
+        }
         #endregion
 
         #region Today Ration : DayRation
@@ -355,6 +364,24 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         }
         #endregion
 
+        #region Add New Meal Command
+        public ICommand AddMealCommand { get; }
+        private bool CanAddMealCommandExecute(object p)
+        {
+            if (Meal is null || (Meal.Calories == 0 && Meal.Proteins == 0)) 
+                return false;
+            return true;
+        }
+        private void OnAddMealCommandExecuted(object p)
+        {
+            List<Meal> temp = TodayMeals;
+            TodayMeals = null;
+            temp.Add(Meal);
+            TodayMeals = temp;
+            ClearSelectedDishesCommand.Execute(new object());
+        }
+        #endregion
+
         #endregion
 
         public MainWindowViewModel()
@@ -379,11 +406,15 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
                 CanAddDishCommandExecute);
             ClearSelectedDishesCommand = new RelayCommand(OnClearSelectedDishesCommandExecuted, 
                 CanClearSelectedDishesCommandExecute);
+            AddMealCommand = new RelayCommand(OnAddMealCommandExecuted,
+                CanAddMealCommandExecute);
             #endregion
 
             Calculator = new Calculator();
             _todayIntake = new DailyIntake();
             _currentDailyIntake = new DailyIntake(2500f, 120f, 90f, 160f);
+            TodayMeals = new List<Meal>();
+            TodayRation = new DayRation();
 
             Dish tomato = new Dish()
             {
