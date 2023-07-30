@@ -182,7 +182,7 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         }
         #endregion
 
-        #region Today Ration : DayRation
+        #region Today Ration properties: DayRation
         private DayRation _todayRation;
         public DayRation TodayRation
         {
@@ -191,6 +191,56 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
             {
                 if(!Set(ref _todayRation, value)) return;
                 OnPropertyChanged(nameof(TodayRation));
+            }
+        }
+        private float _todayCalories;
+        public float TodayCalories
+        {
+            get => _todayCalories;
+            set
+            {
+                if(!Set(ref _todayCalories, value)) return;
+                OnPropertyChanged(nameof(TodayCalories));
+            }
+        }
+        private float _todayProteins;
+        public float TodayProteins
+        {
+            get => _todayProteins;
+            set
+            {
+                if (!Set(ref _todayProteins, value)) return;
+                OnPropertyChanged(nameof(TodayProteins));
+            }
+        }
+        private float _todayFats;
+        public float TodayFats
+        {
+            get => _todayFats;
+            set
+            {
+                if (!Set(ref _todayFats, value)) return;
+                OnPropertyChanged(nameof(TodayFats));
+            }
+        }
+        private float _todayCarbohydrates;
+        public float TodayCarbohydrates
+        {
+            get => _todayCarbohydrates;
+            set
+            {
+                if (!Set(ref _todayCarbohydrates, value)) return;
+                OnPropertyChanged(nameof(TodayCarbohydrates));
+            }
+        }
+        private float _todayWeight;
+        public float TodayWeight
+        {
+            get => _todayWeight;
+            set
+            {
+                if (!Set(ref _todayWeight, value)) return;
+                OnPropertyChanged(nameof(TodayWeight));
             }
         }
         #endregion
@@ -387,6 +437,14 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
             TodayMeals = null;
             temp.Add(Meal);
             TodayMeals = temp;
+            TodayRation.Meals = TodayMeals;
+
+            TodayCalories = TodayRation.Calories;
+            TodayProteins = TodayRation.Proteins;
+            TodayFats = TodayRation.Fats;
+            TodayCarbohydrates = TodayRation.Carbohydrates;
+            TodayWeight = TodayRation.WeightGrams;
+
             ClearSelectedDishesCommand.Execute(new object());
         }
         #endregion
@@ -424,6 +482,7 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
             _currentDailyIntake = new DailyIntake(2500f, 120f, 90f, 160f);
             TodayMeals = new List<Meal>();
             TodayRation = new DayRation();
+            TodayRation.Date = DateTime.Today;
 
             Dish tomato = new Dish()
             {
