@@ -192,11 +192,11 @@
                                           ItemsSource="{Binding Source={be:EnumBindingSource 
                                     {x:Type es:MealType}}}"/>
                                 <Button Content="Add Meal"
+                                        Command="{Binding AddMealCommand}"
                                         Grid.Column="0" Grid.Row="7"
                                         Grid.ColumnSpan="2"/>
                             </Grid>
-                            <DataGrid ItemsSource="{Binding TodayMeals, 
-                                UpdateSourceTrigger=PropertyChanged}"
+                            <DataGrid ItemsSource="{Binding TodayMeals}"
                                   IsReadOnly="True" AutoGenerateColumns="False"
                                       Grid.Column="2">
                                 <DataGrid.Columns>
