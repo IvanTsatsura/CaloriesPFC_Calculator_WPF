@@ -170,7 +170,7 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         #endregion
 
         #region Today Meals List property : List<Meal>
-        public List<Meal> TodayMeal { get; set; } 
+        public List<Meal> TodayMeals { get; set; } 
         #endregion
 
         #region Today Ration : DayRation

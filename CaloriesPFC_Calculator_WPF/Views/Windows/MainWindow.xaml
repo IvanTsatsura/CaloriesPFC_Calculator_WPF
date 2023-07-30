@@ -144,7 +144,7 @@
                                         Grid.Row="1"
                                         Command="{Binding ClearSelectedDishesCommand}"/>
                             </Grid>
-                            <Grid 
+                            <Grid
                                 Grid.Column="1"
                                 Margin="3, 0">
                                 <Grid.ColumnDefinitions>
@@ -152,6 +152,8 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
                                     <RowDefinition/>
                                     <RowDefinition/>
                                     <RowDefinition/>
@@ -183,7 +185,29 @@
                                     Grid.Column="0" Grid.Row="5"/>
                                 <TextBlock Text="{Binding Meal.WeightGrams}"
                                            Grid.Column="1" Grid.Row="5"/>
+                                <ComboBox Grid.Column="0" Grid.Row="6"
+                                          Grid.ColumnSpan="2"
+                                          SelectedIndex="0"
+                                          SelectedItem="{Binding Meal.Type}"
+                                          ItemsSource="{Binding Source={be:EnumBindingSource 
+                                    {x:Type es:MealType}}}"/>
+                                <Button Content="Add Meal"
+                                        Grid.Column="0" Grid.Row="7"
+                                        Grid.ColumnSpan="2"/>
                             </Grid>
+                            <DataGrid ItemsSource="{Binding TodayMeals, 
+                                UpdateSourceTrigger=PropertyChanged}"
+                                  IsReadOnly="True" AutoGenerateColumns="False"
+                                      Grid.Column="2">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
+                                    <DataGridTextColumn Header="Calories" Binding="{Binding Calories}"/>
+                                    <DataGridTextColumn Header="Proteins" Binding="{Binding Proteins}"/>
+                                    <DataGridTextColumn Header="Fats" Binding="{Binding Fats}"/>
+                                    <DataGridTextColumn Header="Carbohydrates" Binding="{Binding Carbohydrates}"/>
+                                    <DataGridTextColumn Header="weight in grams" Binding="{Binding WeightGrams}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </Grid>
                     </GroupBox>
                 </Grid>
