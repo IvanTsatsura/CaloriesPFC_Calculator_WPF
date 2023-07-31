@@ -245,6 +245,10 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         }
         #endregion
 
+        #region Meal For Remove : Meal
+        public Meal TempMeal { get; set; }
+        #endregion
+
         #region Commands
 
         #region Delete dish command
