@@ -147,8 +147,9 @@
                                        Text="{Binding SelectedDish.Carbohydrates}"/>
                             <TextBlock Grid.Row="4" Grid.Column="0"
                                 Text="Weight(grams):"/>
-                            <TextBlock Grid.Row="4" Grid.Column="1"
-                                       Text="{Binding SelectedDish.WeightGrams}"/>
+                            <TextBox Grid.Row="4" Grid.Column="1"
+                                       Text="{Binding SelectedDish.WeightGrams, UpdateSourceTrigger=PropertyChanged,
+                                Mode=TwoWay}"/>
                             <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"
                                     Content="Add Dish" Width="80"
                                     Command="{Binding AddDishCommand}"/>
