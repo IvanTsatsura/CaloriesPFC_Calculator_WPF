@@ -453,6 +453,23 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
         }
         #endregion
 
+        #region Remove Meal Command
+        public ICommand RemoveMealCommand { get; }
+        private bool CanRemoveMealCommandExecute(object p)
+        {
+            if (TempMeal is null || !(TodayMeals.Contains(TempMeal))) 
+                return false;
+            return true;
+        }
+        private void OnRemoveMealCommandExecuted(object p)
+        {
+            var temp = TodayMeals;
+            temp.Remove(TempMeal);
+            TodayMeals = new List<Meal>();
+            TodayMeals = temp;
+        }
+        #endregion
+
         #endregion
 
         public MainWindowViewModel()
@@ -479,6 +496,8 @@ namespace CaloriesPFC_Calculator_WPF.ViewModels
                 CanClearSelectedDishesCommandExecute);
             AddMealCommand = new RelayCommand(OnAddMealCommandExecuted,
                 CanAddMealCommandExecute);
+            RemoveMealCommand = new RelayCommand(OnRemoveMealCommandExecuted,
+                CanRemoveMealCommandExecute);
             #endregion
 
             Calculator = new Calculator();
