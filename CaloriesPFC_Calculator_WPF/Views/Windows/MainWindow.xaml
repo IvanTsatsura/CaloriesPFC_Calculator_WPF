@@ -113,7 +113,7 @@
                             </ListBox>
                         </DockPanel>
                     </GroupBox>
-                    <GroupBox Header="Selected Dish"
+                    <GroupBox Header="{Binding SelectedDish.Name, FallbackValue='Select Dish'}"
                         Grid.Column="1" Grid.Row="1">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -229,18 +229,29 @@
                                         Grid.Column="0" Grid.Row="7"
                                         Grid.ColumnSpan="2"/>
                             </Grid>
-                            <DataGrid ItemsSource="{Binding TodayMeals}"
+                            <Grid Grid.Column="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <DataGrid ItemsSource="{Binding TodayMeals}"
                                   IsReadOnly="True" AutoGenerateColumns="False"
-                                      Grid.Column="2">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
-                                    <DataGridTextColumn Header="Calories" Binding="{Binding Calories}"/>
-                                    <DataGridTextColumn Header="Proteins" Binding="{Binding Proteins}"/>
-                                    <DataGridTextColumn Header="Fats" Binding="{Binding Fats}"/>
-                                    <DataGridTextColumn Header="Carbohydrates" Binding="{Binding Carbohydrates}"/>
-                                    <DataGridTextColumn Header="weight in grams" Binding="{Binding WeightGrams}"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
+                                      SelectedItem="{Binding TempMeal}"
+                                         Grid.Row="0" >
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
+                                        <DataGridTextColumn Header="Calories" Binding="{Binding Calories}"/>
+                                        <DataGridTextColumn Header="Proteins" Binding="{Binding Proteins}"/>
+                                        <DataGridTextColumn Header="Fats" Binding="{Binding Fats}"/>
+                                        <DataGridTextColumn Header="Carbohydrates" Binding="{Binding Carbohydrates}"/>
+                                        <DataGridTextColumn Header="weight in grams" Binding="{Binding WeightGrams}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Button Content="Remove Meal" 
+                                        Grid.Row="1"
+                                        Command="{Binding RemoveMealCommand}"
+                                        CommandParameter="{Binding TempMeal}"/>
+                            </Grid>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="Today Nutrients"
