@@ -2,7 +2,7 @@
 # Today Tab:
 ![Screenshot1](https://github.com/IvanTsatsura/CaloriesPFC_Calculator_WPF/assets/56256224/5701964d-fffc-4fbb-a08d-733cd0c690fb)
 # All Dishes Tab:
-![Screenshot1](https://github.com/IvanTsatsura/CaloriesPFC_Calculator_WPF/assets/56256224/cd633d1a-9454-40e6-9e57-18daf611a31b)
+![Screenshot2](https://github.com/IvanTsatsura/CaloriesPFC_Calculator_WPF/assets/56256224/7e6e7d69-9996-4e04-a735-04e44986d650)
 # Statistics Tab:
 ![Screenshot3](https://github.com/IvanTsatsura/CaloriesPFC_Calculator_WPF/assets/56256224/1a6b3489-03eb-4d6c-ac15-965fecc8119e)
 # Calculator Tab:
